@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Mohanson">
+  <link rel="canonical" href="http://accu.cc/content/gameboy/audio/register/">
+  <link rel="shortcut icon" href="../../../../img/favicon.ico">
+  <title>GB-音频-寄存器 - Mohanson</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../../../css/theme.css" />
+  <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  <link href="../../../../css/accu.css" rel="stylesheet" />
+    
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "GB-\u97f3\u9891-\u5bc4\u5b58\u5668";
+    var mkdocs_page_input_path = "content/gameboy/audio/register.md";
+    var mkdocs_page_url = "/content/gameboy/audio/register/";
+  </script>
+  
+  <script src="../../../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+    <script data-ad-client="ca-pub-5236818090688638" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+ 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../../../.." class="icon icon-home"> Mohanson</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../..">主页</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">数字图像处理</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../pil/channel/">数字图像处理-通道</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../pil/mean/">数字图像处理-均值</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../pil/contrast/">数字图像处理-对比增强</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../pil/contrast_tensile/">数字图像处理-对比拉伸</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../pil/bit/">数字图像处理-位图切割</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../pil/histogram_equalization/">数字图像处理-直方图均衡化</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../pil/sub/">数字图像处理-图像减法</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../pil/agwn/">数字图像处理-加性高斯白噪声与去噪</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../pil/spatial_filter/">数字图像处理-空间滤波基础</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../pil/spatial_filter_mean/">数字图像处理-空间滤波-均值滤波</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../pil/spatial_filter_medium/">数字图像处理-空间滤波-中值滤波</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../pil/spatial_filter_sharpening/">数字图像处理-空间滤波-锐化滤波</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../pil/spatial_filter_gaussian_blur/">数字图像处理-空间滤波-高斯滤波</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../pil/frequency_filter/">数字图像处理-频域滤波基础</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../pil/frequency_filter_lpf/">数字图像处理-频域滤波-低通滤波</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../pil/frequency_filter_hpf/">数字图像处理-频域滤波-高通滤波</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../pil/frequency_filter_br_bp/">数字图像处理-频域滤波-带阻和带通滤波</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../pil/noise/">数字图像处理-噪声</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../pil/safe_color/">数字图像处理-安全色</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../pil/macaron_color/">数字图像处理-马卡龙色</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../pil/complementary_and_invert_color/">数字图像处理-补色和反色</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../pil/watermark/">数字图像处理-水印</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../pil/resize_nearst/">数字图像处理-缩放-最近邻插值法</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../pil/resize_nearst_ghost/">数字图像处理-缩放-最近邻插值法的幽灵事件</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../pil/resize_bilinear/">数字图像处理-缩放-双线性算法</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../pil/resize_bicubic/">数字图像处理-缩放-双三次插值法</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../pil/ascii/">数字图像处理-字符画</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../pil/pil_tutorial_overview/">Python-PIL-概览</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../pil/pil_image/">Python-PIL-Image</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../pil/pil_imagechops/">Python-PIL-ImageChops</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../pil/pil_imagecolor/">Python-PIL-ImageColor</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../pil/pil_imagedraw/">Python-PIL-ImageDraw</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../pil/pil_imageenhance/">Python-PIL-ImageEnhance</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../pil/pil_imageops/">Python-PIL-ImageOps</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">自己动手写 Game Boy 仿真器</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../../preface/">GB-前言</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../history/emulator/">GB-虚拟机发展史-硬件仿真器</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../history/runtime/">GB-虚拟机发展史-程序虚拟机</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../history/simulator/">GB-虚拟机发展史-软件模拟器</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cartridge/about_cartridge/">GB-游戏卡带-漫谈卡带</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cartridge/cartridge_header/">GB-游戏卡带-Header</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cartridge/memory_bank_controller/">GB-游戏卡带-Memory Bank Controller</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cartridge/rom_only/">GB-游戏卡带-ROM only</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cartridge/mbc1/">GB-游戏卡带-MBC1</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cartridge/mbc2/">GB-游戏卡带-MBC2</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cartridge/mbc3/">GB-游戏卡带-MBC3</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cartridge/mbc5/">GB-游戏卡带-MBC5</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cartridge/others/">GB-游戏卡带-完整代码</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cpu/overview/">GB-CPU-概览</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cpu/alu/">GB-CPU-算术逻辑单元</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cpu/register/">GB-CPU-寄存器与存储系统</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cpu/isa/">GB-CPU-指令与指令集</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cpu/pipeline/">GB-CPU-流水线</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cpu/lr35902_standard/">GB-CPU-LR35902标准指令集</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cpu/lr35902_extension/">GB-CPU-LR35902扩展指令集</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cpu/cycles/">GB-CPU-LR35902时钟周期与频率仿真</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cpu/interrupts/">GB-CPU-LR35902中断</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cpu/mmu/">GB-CPU-内存管理单元与主板</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../video/overview/">GB-视频-概览</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../video/dot_matrix/">GB-视频-点阵图</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../video/show/">GB-视频-显示输出</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../video/crt/">GB-视频-光栅成像原理与概念</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../video/system/">GB-视频-图像显示系统</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../video/gpu/">GB-视频-GPU 寄存器与内存结构</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../video/code/">GB-视频-代码实现</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../overview/">GB-音频-概览</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../sound/">GB-音频-声音的构成</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../cpal/">GB-音频-Rust Cpal 库介绍</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../concept/">GB-音频-音频系统概念简介</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">GB-音频-寄存器</a>
+    <ul class="current">
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../timer/">GB-音频-512 Hz 时钟信号</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../frame_sequence/">GB-音频-序列发生器</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../length_counter/">GB-音频-长度计数器</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../vol/">GB-音频-音量包络</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../frequency_sweep/">GB-音频-频率扫描器</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../square/">GB-音频-方波通道 1 & 2</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../wave/">GB-音频-可编程波形通道</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../noise/">GB-音频-白噪音通道</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../mixer/">GB-音频-混频器</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../play/">GB-音频-在计算机上播放</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../other/joypad/">GB-其他-游戏手柄</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../other/serial/">GB-其他-串行通行接口</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../other/timer/">GB-其他-定时器</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../other/init/">GB-其他-硬件初始化工作</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../other/test/">GB-其他-测试</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../foot/">GB-后记</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">算法</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../daze/ga/sga/">遗传算法-简单遗传算法</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../daze/ga/sga_optret/">遗传算法-最优保留策略</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../daze/ga/evolve/">遗传算法-生物进化模拟</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../daze/ga/fooled_nn/">遗传算法-愚弄神经网络</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../daze/dlib/install/">Dlib-安装</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../daze/dlib/face_detect/">Dlib-人脸检测</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../daze/dlib/face_landmark/">Dlib-人脸标注</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../daze/dlib/face_recognition/">Dlib-人脸识别</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../daze/dlib/face_clustering/">Dlib-人脸聚类</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../daze/rc4/overview/">加密算法-RC4-概览</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../daze/rc4/performance_testing/">加密算法-RC4-性能测试</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../daze/game_of_life/overview/">生命游戏</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../daze/sklearn/overview/">sklearn-概览</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../daze/sklearn/liner_model/overview/">sklearn-线性模型-概览</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../daze/sklearn/liner_model/linear_regression/">sklearn-线性模型-普通最小二乘法</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../daze/sklearn/liner_model/ridge/">sklearn-线性模型-岭回归</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../daze/sklearn/liner_model/logistic_regression/">sklearn-线性模型-逻辑回归</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../daze/sklearn/tree/">sklearn-决策树</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../daze/sklearn/bayes/">sklearn-贝叶斯分类器</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../daze/sklearn/knn/">sklearn-kNN</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../daze/sklearn/cluster/">sklearn-聚类</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../daze/sklearn/svm/">sklearn-SVM</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../daze/sklearn/manifold/">sklearn-流形学习</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../daze/sklearn/evaluation/">sklearn-评估</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../daze/ml/neural_style_transfer/">机器学习-图像风格转移</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../daze/ml/fasttext/">机器学习-快速文本分类</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../daze/ml/hog/">机器学习-HOG</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../daze/math/huffman/">Math-霍夫曼编码</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../daze/math/variance_and_sd/">Math-方差与标准差</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../daze/math/normal_distribution/">Math-正态分布</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../daze/math/kelly_formula/">Math-凯利公式</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">语言</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../py/np/split/">Python-np-分割与合并</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../py/plt/line/">Python-matplotlib-折线图</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../py/plt/scatter/">Python-matplotlib-散点图</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../py/plt/bar/">Python-matplotlib-柱状图</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../py/plt/pie/">Python-matplotlib-饼图</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../py/f_string/">Python-f-string</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../py/ctypes/overview/">Python-windows编程-概览</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../py/ctypes/recycle/">Python-windows编程-删除文件至回收站</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../py/setup/">Python-打包并发布代码至 PyPI</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../py/pywasm/overview/">Python-pywasm-美味尝鲜</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../py/pywasm/leb128/">Python-pywasm-LEB128</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../go/read_file/">Go-按行读取文件</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../go/socket/">Go-socket</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../go/socket_not_accept/">Go-socket-假如服务端不调用 Accept</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../go/tls/">Go-tls</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../go/socks5/">Go-socks-version-5</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../go/cross_compiling/">Go-交叉编译</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../go/end_of_time/">Go-时间尽头</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../go/token_bucket/">Go-流量限制</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../go/fswatch/">Go-目录监听</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../go/cgo/">Go-Cgo</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../ahk/overview/">AHK-概览</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../ahk/clicker/">AHK-实现鼠标连点器</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../ahk/color/">AHK-实现屏幕取色器</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../ahk/longpress/">AHK-长按</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../ahk/loopread/">AHK-按行读取文件</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../rust/overview/">Rust-概览</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../rust/io/">Rust-文件读取</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../rust/http/">Rust-HTTP</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../rust/concurrent/">Rust-并发</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../rust/tcp/">Rust-TCP</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../rust/json/">Rust-JSON</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">区块链</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../blockchain/evm/">EVM</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../blockchain/merkle_tree/">Merkle Tree</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">竹书纪年</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../diary/2019/">Y2019</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../diary/2020/">Y2020</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">演讲</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../speech/minits/">minits, 以 LLVM 为后端的 TypeScript 静态编译器</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../speech/blockchain_privacy_protection/">区块链隐私保护密码技术介绍</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../..">Mohanson</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>自己动手写 Game Boy 仿真器 &raquo;</li>
+        
+      
+    
+    <li>GB-音频-寄存器</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/mohanson/accu/edit/master/docs/content/gameboy/audio/register.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="_1">寄存器</h1>
+<p>声音寄存器映射到内存中的 0xff10 到 0xff3f 地址. 每个音频通道均有五个逻辑寄存器, 依次命名为 NRx0 到 NRx4, 但有些通道可能不会使用 NRx0 寄存器. 每个寄存器均是 8 位大小, 它的 8 个 bit 通常被划分为不同的位段, 被不同的逻辑程序或电路所使用. 下表展示了每个寄存器在不同音频通道中的作用. 标有 "-" 的位的值没有实际作用. 对寄存器中的值的引用意味着写入的最后一个值, 即虽然 "-" 位不会被使用, 但依然能被正常读取.</p>
+<pre><code class="no-highlight">-----------------------------------------------------------------
+       Square 1
+NR10 FF10 -PPP NSSS Sweep period, negate, shift
+NR11 FF11 DDLL LLLL Duty, Length load (64-L)
+NR12 FF12 VVVV APPP Starting volume, Envelope add mode, period
+NR13 FF13 FFFF FFFF Frequency LSB
+NR14 FF14 TL-- -FFF Trigger, Length enable, Frequency MSB
+
+       Square 2
+     FF15 ---- ---- Not used
+NR21 FF16 DDLL LLLL Duty, Length load (64-L)
+NR22 FF17 VVVV APPP Starting volume, Envelope add mode, period
+NR23 FF18 FFFF FFFF Frequency LSB
+NR24 FF19 TL-- -FFF Trigger, Length enable, Frequency MSB
+
+       Wave
+NR30 FF1A E--- ---- DAC power
+NR31 FF1B LLLL LLLL Length load (256-L)
+NR32 FF1C -VV- ---- Volume code (00=0%, 01=100%, 10=50%, 11=25%)
+NR33 FF1D FFFF FFFF Frequency LSB
+NR34 FF1E TL-- -FFF Trigger, Length enable, Frequency MSB
+
+       Noise
+     FF1F ---- ---- Not used
+NR41 FF20 --LL LLLL Length load (64-L)
+NR42 FF21 VVVV APPP Starting volume, Envelope add mode, period
+NR43 FF22 SSSS WDDD Clock shift, Width mode of LFSR, Divisor code
+NR44 FF23 TL-- ---- Trigger, Length enable
+
+       Control/Status
+NR50 FF24 ALLL BRRR Vin L enable, Left vol, Vin R enable, Right vol
+NR51 FF25 NW21 NW21 Left enables, Right enables
+NR52 FF26 P--- NW21 Power control/status, Channel length statuses
+
+       Not used
+     FF27 ---- ----
+     .... ---- ----
+     FF2F ---- ----
+
+       Wave Table
+     FF30 0000 1111 Samples 0 and 1
+     ....
+     FF3F 0000 1111 Samples 30 and 31
+</code></pre>
+
+<p>初次阅读此表可能会产生一些疑惑, 这里以此表的第一个寄存器 Square1 的 NR10 寄存器进行解释说明:</p>
+<pre><code class="no-highlight">NR10 FF10 -PPP NSSS Sweep period, negate, shift
+</code></pre>
+
+<p>NR10 是寄存器的名字, FF10 表示该寄存器被映射到内存中的地址, "-PPP NSSS Sweep period, negate, shift" 表示该寄存器低 3 位的助记词是 shift, 第 3 位的助记词是 negate, 第 4 到 6 位的助记词是 Sweep period.</p>
+<h1 id="_2">控制与状态寄存器</h1>
+<p>有 3 个寄存器可以对 Game Boy 进行全局的系统控制, 它们分别被映射到内存地址的 0xff24, 0xff25 与 0xff26.</p>
+<ul>
+<li>0xff24 分别控制左声道音量启用/禁用, 左声道音量, 右声道音量启用/禁用和右声道音量</li>
+<li>0xff25 分别控制左声道启用/警用和右声道启用/警用</li>
+<li>0xff26 分别控制音频系统总开关与 4 个通道的当前状态</li>
+</ul>
+<p>0xff24 与 0xff25 寄存器中的两个启用/警用开关有所区别, 前者是决定是否将音量增益/衰减应用到原始数据上, 而后者则决定是否完全关闭左右声道的音频输出. 0xff25 寄存器的每一位表示如下</p>
+<table>
+<thead>
+<tr>
+<th>位</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bit 7</td>
+<td>白噪声通道是否允许从左声道输出</td>
+</tr>
+<tr>
+<td>Bit 6</td>
+<td>可编程波形通道是否允许从左声道输出</td>
+</tr>
+<tr>
+<td>Bit 5</td>
+<td>方波通道 2 是否允许从左声道输出</td>
+</tr>
+<tr>
+<td>Bit 4</td>
+<td>方波通道 1 是否允许从左声道输出</td>
+</tr>
+<tr>
+<td>Bit 3</td>
+<td>白噪声通道是否允许从右声道输出</td>
+</tr>
+<tr>
+<td>Bit 2</td>
+<td>可编程波形通道是否允许从右声道输出</td>
+</tr>
+<tr>
+<td>Bit 1</td>
+<td>方波通道 2 是否允许从右声道输出</td>
+</tr>
+<tr>
+<td>Bit 0</td>
+<td>方波通道 1 是否允许从右声道输出</td>
+</tr>
+</tbody>
+</table>
+<p>0xff26 寄存器的第一位通常可以是 1, 当然前提是音频系统正在运行时; 而后 4 位表示当前 4 个音频通道的状态. 当音频通道正在工作时, 则相应位为 1, 否则为 0. 因此, 考虑如下一种情形, 方波通道 2 被禁用而其他所有音频通道均在正常执行, 则 0xff26 的值为(以二进制位表示)</p>
+<pre><code class="no-highlight">| 1 | - | - | - | 1 | 1 | 0 | 1 |
+</code></pre>
+
+<h1 id="_3">代码实现</h1>
+<p>定义一个枚举类型, 表明寄存器被应用在哪个音频通道中.</p>
+<pre><code class="rs">#[derive(Clone, Eq, PartialEq)]
+enum Channel {
+    Square1,
+    Square2,
+    Wave,
+    Noise,
+}
+</code></pre>
+
+<p>定义寄存器结构体, 它拥有一个 channel 字段表明当前的音频通道类型, 以及 5 个 u8 类型的成员变量用于存储数据.</p>
+<pre><code class="rs">struct Register {
+    channel: Channel,
+    nrx0: u8,
+    nrx1: u8,
+    nrx2: u8,
+    nrx3: u8,
+    nrx4: u8,
+}
+</code></pre>
+
+<p>定义一些简便方法来完成寄存器中的数值读取和修改. 某些数据类型是专用于某些音频通道的, 因此会在代码中使用 assert 语法进行限定, 可以避免类似在 Suqare 2 通道读取 NRX0 寄存器中的值一类的错误.</p>
+<pre><code class="rs">impl Register {
+    fn get_sweep_period(&amp;self) -&gt; u8 {
+        assert!(self.channel == Channel::Square1);
+        (self.nrx0 &gt;&gt; 4) &amp; 0x07
+    }
+
+    fn get_negate(&amp;self) -&gt; bool {
+        assert!(self.channel == Channel::Square1);
+        self.nrx0 &amp; 0x08 != 0x00
+    }
+
+    fn get_shift(&amp;self) -&gt; u8 {
+        assert!(self.channel == Channel::Square1);
+        self.nrx0 &amp; 0x07
+    }
+
+    fn get_dac_power(&amp;self) -&gt; bool {
+        assert!(self.channel == Channel::Wave);
+        self.nrx0 &amp; 0x80 != 0x00
+    }
+
+    fn get_duty(&amp;self) -&gt; u8 {
+        assert!(self.channel == Channel::Square1 || self.channel == Channel::Square2);
+        self.nrx1 &gt;&gt; 6
+    }
+
+    fn get_length_load(&amp;self) -&gt; u16 {
+        if self.channel == Channel::Wave {
+            (1 &lt;&lt; 8) - u16::from(self.nrx1)
+        } else {
+            (1 &lt;&lt; 6) - u16::from(self.nrx1 &amp; 0x3f)
+        }
+    }
+
+    fn get_starting_volume(&amp;self) -&gt; u8 {
+        assert!(self.channel != Channel::Wave);
+        self.nrx2 &gt;&gt; 4
+    }
+
+    fn get_volume_code(&amp;self) -&gt; u8 {
+        assert!(self.channel == Channel::Wave);
+        (self.nrx2 &gt;&gt; 5) &amp; 0x03
+    }
+
+    fn get_envelope_add_mode(&amp;self) -&gt; bool {
+        assert!(self.channel != Channel::Wave);
+        self.nrx2 &amp; 0x08 != 0x00
+    }
+
+    fn get_period(&amp;self) -&gt; u8 {
+        assert!(self.channel != Channel::Wave);
+        self.nrx2 &amp; 0x07
+    }
+
+    fn get_frequency(&amp;self) -&gt; u16 {
+        assert!(self.channel != Channel::Noise);
+        u16::from(self.nrx4 &amp; 0x07) &lt;&lt; 8 | u16::from(self.nrx3)
+    }
+
+    fn set_frequency(&amp;mut self, f: u16) {
+        assert!(self.channel != Channel::Noise);
+        let h = ((f &gt;&gt; 8) &amp; 0x07) as u8;
+        let l = f as u8;
+        self.nrx4 = (self.nrx4 &amp; 0xf8) | h;
+        self.nrx3 = l;
+    }
+
+    fn get_clock_shift(&amp;self) -&gt; u8 {
+        assert!(self.channel == Channel::Noise);
+        self.nrx3 &gt;&gt; 4
+    }
+
+    fn get_width_mode_of_lfsr(&amp;self) -&gt; bool {
+        assert!(self.channel == Channel::Noise);
+        self.nrx3 &amp; 0x08 != 0x00
+    }
+
+    fn get_dividor_code(&amp;self) -&gt; u8 {
+        assert!(self.channel == Channel::Noise);
+        self.nrx3 &amp; 0x07
+    }
+
+    fn get_trigger(&amp;self) -&gt; bool {
+        self.nrx4 &amp; 0x80 != 0x00
+    }
+
+    fn set_trigger(&amp;mut self, b: bool) {
+        if b {
+            self.nrx4 |= 0x80;
+        } else {
+            self.nrx4 &amp;= 0x7f;
+        };
+    }
+
+    fn get_length_enable(&amp;self) -&gt; bool {
+        self.nrx4 &amp; 0x40 != 0x00
+    }
+}
+</code></pre>
+
+<p>最后写上构造方法.</p>
+<pre><code class="rs">impl Register {
+    fn power_up(channel: Channel) -&gt; Self {
+        Self {
+            channel,
+            nrx0: 0x00,
+            nrx1: 0x00,
+            nrx2: 0x00,
+            nrx3: 0x00,
+            nrx4: 0x00,
+        }
+    }
+}
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../timer/" class="btn btn-neutral float-right" title="GB-音频-512 Hz 时钟信号">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../concept/" class="btn btn-neutral" title="GB-音频-音频系统概念简介"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/mohanson/accu/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../concept/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../timer/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    
+    <script>var base_url = '../../../..';</script>
+    <script src="../../../../js/theme.js" defer></script>
+      <script src="../../../../js/accu.js" defer></script>
+      <script src="../../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+
+</body>
+</html>

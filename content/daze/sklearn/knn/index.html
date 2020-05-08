@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Mohanson">
+  <link rel="canonical" href="http://accu.cc/content/daze/sklearn/knn/">
+  <link rel="shortcut icon" href="../../../../img/favicon.ico">
+  <title>sklearn-kNN - Mohanson</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../../../css/theme.css" />
+  <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  <link href="../../../../css/accu.css" rel="stylesheet" />
+    
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "sklearn-kNN";
+    var mkdocs_page_input_path = "content/daze/sklearn/knn.md";
+    var mkdocs_page_url = "/content/daze/sklearn/knn/";
+  </script>
+  
+  <script src="../../../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+    <script data-ad-client="ca-pub-5236818090688638" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+ 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../../../.." class="icon icon-home"> Mohanson</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../..">主页</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">数字图像处理</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../pil/channel/">数字图像处理-通道</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../pil/mean/">数字图像处理-均值</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../pil/contrast/">数字图像处理-对比增强</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../pil/contrast_tensile/">数字图像处理-对比拉伸</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../pil/bit/">数字图像处理-位图切割</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../pil/histogram_equalization/">数字图像处理-直方图均衡化</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../pil/sub/">数字图像处理-图像减法</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../pil/agwn/">数字图像处理-加性高斯白噪声与去噪</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../pil/spatial_filter/">数字图像处理-空间滤波基础</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../pil/spatial_filter_mean/">数字图像处理-空间滤波-均值滤波</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../pil/spatial_filter_medium/">数字图像处理-空间滤波-中值滤波</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../pil/spatial_filter_sharpening/">数字图像处理-空间滤波-锐化滤波</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../pil/spatial_filter_gaussian_blur/">数字图像处理-空间滤波-高斯滤波</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../pil/frequency_filter/">数字图像处理-频域滤波基础</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../pil/frequency_filter_lpf/">数字图像处理-频域滤波-低通滤波</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../pil/frequency_filter_hpf/">数字图像处理-频域滤波-高通滤波</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../pil/frequency_filter_br_bp/">数字图像处理-频域滤波-带阻和带通滤波</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../pil/noise/">数字图像处理-噪声</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../pil/safe_color/">数字图像处理-安全色</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../pil/macaron_color/">数字图像处理-马卡龙色</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../pil/complementary_and_invert_color/">数字图像处理-补色和反色</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../pil/watermark/">数字图像处理-水印</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../pil/resize_nearst/">数字图像处理-缩放-最近邻插值法</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../pil/resize_nearst_ghost/">数字图像处理-缩放-最近邻插值法的幽灵事件</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../pil/resize_bilinear/">数字图像处理-缩放-双线性算法</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../pil/resize_bicubic/">数字图像处理-缩放-双三次插值法</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../pil/ascii/">数字图像处理-字符画</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../pil/pil_tutorial_overview/">Python-PIL-概览</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../pil/pil_image/">Python-PIL-Image</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../pil/pil_imagechops/">Python-PIL-ImageChops</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../pil/pil_imagecolor/">Python-PIL-ImageColor</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../pil/pil_imagedraw/">Python-PIL-ImageDraw</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../pil/pil_imageenhance/">Python-PIL-ImageEnhance</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../pil/pil_imageops/">Python-PIL-ImageOps</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">自己动手写 Game Boy 仿真器</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../gameboy/preface/">GB-前言</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../gameboy/history/emulator/">GB-虚拟机发展史-硬件仿真器</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../gameboy/history/runtime/">GB-虚拟机发展史-程序虚拟机</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../gameboy/history/simulator/">GB-虚拟机发展史-软件模拟器</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../gameboy/cartridge/about_cartridge/">GB-游戏卡带-漫谈卡带</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../gameboy/cartridge/cartridge_header/">GB-游戏卡带-Header</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../gameboy/cartridge/memory_bank_controller/">GB-游戏卡带-Memory Bank Controller</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../gameboy/cartridge/rom_only/">GB-游戏卡带-ROM only</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../gameboy/cartridge/mbc1/">GB-游戏卡带-MBC1</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../gameboy/cartridge/mbc2/">GB-游戏卡带-MBC2</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../gameboy/cartridge/mbc3/">GB-游戏卡带-MBC3</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../gameboy/cartridge/mbc5/">GB-游戏卡带-MBC5</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../gameboy/cartridge/others/">GB-游戏卡带-完整代码</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../gameboy/cpu/overview/">GB-CPU-概览</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../gameboy/cpu/alu/">GB-CPU-算术逻辑单元</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../gameboy/cpu/register/">GB-CPU-寄存器与存储系统</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../gameboy/cpu/isa/">GB-CPU-指令与指令集</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../gameboy/cpu/pipeline/">GB-CPU-流水线</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../gameboy/cpu/lr35902_standard/">GB-CPU-LR35902标准指令集</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../gameboy/cpu/lr35902_extension/">GB-CPU-LR35902扩展指令集</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../gameboy/cpu/cycles/">GB-CPU-LR35902时钟周期与频率仿真</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../gameboy/cpu/interrupts/">GB-CPU-LR35902中断</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../gameboy/cpu/mmu/">GB-CPU-内存管理单元与主板</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../gameboy/video/overview/">GB-视频-概览</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../gameboy/video/dot_matrix/">GB-视频-点阵图</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../gameboy/video/show/">GB-视频-显示输出</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../gameboy/video/crt/">GB-视频-光栅成像原理与概念</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../gameboy/video/system/">GB-视频-图像显示系统</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../gameboy/video/gpu/">GB-视频-GPU 寄存器与内存结构</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../gameboy/video/code/">GB-视频-代码实现</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../gameboy/audio/overview/">GB-音频-概览</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../gameboy/audio/sound/">GB-音频-声音的构成</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../gameboy/audio/cpal/">GB-音频-Rust Cpal 库介绍</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../gameboy/audio/concept/">GB-音频-音频系统概念简介</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../gameboy/audio/register/">GB-音频-寄存器</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../gameboy/audio/timer/">GB-音频-512 Hz 时钟信号</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../gameboy/audio/frame_sequence/">GB-音频-序列发生器</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../gameboy/audio/length_counter/">GB-音频-长度计数器</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../gameboy/audio/vol/">GB-音频-音量包络</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../gameboy/audio/frequency_sweep/">GB-音频-频率扫描器</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../gameboy/audio/square/">GB-音频-方波通道 1 & 2</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../gameboy/audio/wave/">GB-音频-可编程波形通道</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../gameboy/audio/noise/">GB-音频-白噪音通道</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../gameboy/audio/mixer/">GB-音频-混频器</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../gameboy/audio/play/">GB-音频-在计算机上播放</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../gameboy/other/joypad/">GB-其他-游戏手柄</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../gameboy/other/serial/">GB-其他-串行通行接口</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../gameboy/other/timer/">GB-其他-定时器</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../gameboy/other/init/">GB-其他-硬件初始化工作</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../gameboy/other/test/">GB-其他-测试</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../gameboy/foot/">GB-后记</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">算法</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../../ga/sga/">遗传算法-简单遗传算法</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../ga/sga_optret/">遗传算法-最优保留策略</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../ga/evolve/">遗传算法-生物进化模拟</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../ga/fooled_nn/">遗传算法-愚弄神经网络</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../dlib/install/">Dlib-安装</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../dlib/face_detect/">Dlib-人脸检测</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../dlib/face_landmark/">Dlib-人脸标注</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../dlib/face_recognition/">Dlib-人脸识别</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../dlib/face_clustering/">Dlib-人脸聚类</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../rc4/overview/">加密算法-RC4-概览</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../rc4/performance_testing/">加密算法-RC4-性能测试</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../game_of_life/overview/">生命游戏</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../overview/">sklearn-概览</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../liner_model/overview/">sklearn-线性模型-概览</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../liner_model/linear_regression/">sklearn-线性模型-普通最小二乘法</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../liner_model/ridge/">sklearn-线性模型-岭回归</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../liner_model/logistic_regression/">sklearn-线性模型-逻辑回归</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../tree/">sklearn-决策树</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../bayes/">sklearn-贝叶斯分类器</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">sklearn-kNN</a>
+    <ul class="current">
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../cluster/">sklearn-聚类</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../svm/">sklearn-SVM</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../manifold/">sklearn-流形学习</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../evaluation/">sklearn-评估</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../ml/neural_style_transfer/">机器学习-图像风格转移</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../ml/fasttext/">机器学习-快速文本分类</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../ml/hog/">机器学习-HOG</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../math/huffman/">Math-霍夫曼编码</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../math/variance_and_sd/">Math-方差与标准差</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../math/normal_distribution/">Math-正态分布</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../math/kelly_formula/">Math-凯利公式</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">语言</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../py/np/split/">Python-np-分割与合并</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../py/plt/line/">Python-matplotlib-折线图</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../py/plt/scatter/">Python-matplotlib-散点图</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../py/plt/bar/">Python-matplotlib-柱状图</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../py/plt/pie/">Python-matplotlib-饼图</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../py/f_string/">Python-f-string</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../py/ctypes/overview/">Python-windows编程-概览</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../py/ctypes/recycle/">Python-windows编程-删除文件至回收站</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../py/setup/">Python-打包并发布代码至 PyPI</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../py/pywasm/overview/">Python-pywasm-美味尝鲜</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../py/pywasm/leb128/">Python-pywasm-LEB128</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../go/read_file/">Go-按行读取文件</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../go/socket/">Go-socket</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../go/socket_not_accept/">Go-socket-假如服务端不调用 Accept</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../go/tls/">Go-tls</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../go/socks5/">Go-socks-version-5</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../go/cross_compiling/">Go-交叉编译</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../go/end_of_time/">Go-时间尽头</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../go/token_bucket/">Go-流量限制</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../go/fswatch/">Go-目录监听</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../go/cgo/">Go-Cgo</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../ahk/overview/">AHK-概览</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../ahk/clicker/">AHK-实现鼠标连点器</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../ahk/color/">AHK-实现屏幕取色器</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../ahk/longpress/">AHK-长按</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../ahk/loopread/">AHK-按行读取文件</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../rust/overview/">Rust-概览</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../rust/io/">Rust-文件读取</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../rust/http/">Rust-HTTP</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../rust/concurrent/">Rust-并发</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../rust/tcp/">Rust-TCP</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../rust/json/">Rust-JSON</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">区块链</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../blockchain/evm/">EVM</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../blockchain/merkle_tree/">Merkle Tree</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">竹书纪年</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../diary/2019/">Y2019</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../diary/2020/">Y2020</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">演讲</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../speech/minits/">minits, 以 LLVM 为后端的 TypeScript 静态编译器</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../speech/blockchain_privacy_protection/">区块链隐私保护密码技术介绍</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../..">Mohanson</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>算法 &raquo;</li>
+        
+      
+    
+    <li>sklearn-kNN</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/mohanson/accu/edit/master/docs/content/daze/sklearn/knn.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="knn">kNN 算法</h1>
+<p>k 近邻法 (k-Nearest Neighbor, kNN) 是机器学习所有算法中理论最简单, 最好理解的算法. 它是一种基本的分类与回归方法, 它的输入为实例的特征向量, 通过计算新数据与训练数据特征值之间的距离, 然后选取 k(k&gt;=1) 个距离最近的邻居进行分类判断(投票法)或者回归. 如果 k=1, 那么新数据被简单地分配给其近邻的类.</p>
+<p>对于分类问题: 输出为实例的类别. 分类时, 对于新的实例, 根据其 k 个最近邻的训练实例的类别, 通过多数表决等方式进行预测.</p>
+<p>对于回归问题: 输出为实例的值. 回归时, 对于新的实例, 取其 k 个最近邻的训练实例的平均值为预测值.</p>
+<p>k 近邻法分类的直观理解: 给定一个训练数据集, 对于新的输人实例, 在训练集中找到与该实例最邻近的 k 个实例. 这 k 个实例的多数属于某个类别, 则该输人实例就划分为这个类别. k 近邻法不具有显式的学习过程, 它是直接预测. 实际上它是利用训练数据集对特征向量空间进行划分, 并且作为其分类的"模型".</p>
+<p><img alt="img" src="/img/daze/sklearn/knn/knn_classification.svg" /></p>
+<p>k 近邻算法例子. 测试样本(绿色圆形)应归入要么是第一类的蓝色方形或是第二类的红色三角形. 如果 k=3(实线圆圈) 它被分配给第二类, 因为有 2 个三角形和只有 1 个正方形在内侧圆圈之内. 如果 k=5(虚线圆圈) 它被分配到第一类(3 个正方形与 2 个三角形在外侧圆圈之内).</p>
+<h1 id="_1">距离度量</h1>
+<p>kNN 算法要求数据的所有特征都可以做可比较的量化. 为了公平, 样本参数必须做一些归一化处理. 特征空间中两个实例点的距离是两个实例点相似度的反映. 一般取欧式距离. np 中使用 <code>np.linalg.norm(x1 - x2)</code> 计算欧式距离.</p>
+<h1 id="_2">分类</h1>
+<p>实现一个 k=3 的手写数字分类器, 最后的测试精度达到 97%.</p>
+<pre><code class="py">import numpy as np
+import sklearn.datasets
+import sklearn.metrics
+import sklearn.model_selection
+import sklearn.neighbors
+
+digits = sklearn.datasets.load_digits()
+x_train, x_test, y_train, y_test = sklearn.model_selection.train_test_split(
+    digits.data, digits.target, test_size=0.25, random_state=0, stratify=digits.target)
+print('x_train.shape', x_train.shape)
+print('y_train.shape', y_train.shape)
+
+
+def classify(x_train, y_train, k, x):
+    sources = np.empty(y_train.shape)
+    for i, e in enumerate(x_train):
+        d = np.linalg.norm(e - x)  # 欧式距离
+        sources[i] = d
+    indices = np.argsort(sources)[:k]
+
+    knn = {}
+    for i in indices:
+        l = y_train[i]
+        if l in knn:
+            knn[l] += 1
+        else:
+            knn[l] = 1
+    return max(knn)
+
+
+y_pred = np.empty(y_test.shape)
+for i, e in enumerate(x_test):
+    y_pred[i] = classify(x_train, y_train, 3, e)
+
+acc = sklearn.metrics.classification_report(y_test, y_pred)
+print(acc)
+</code></pre>
+
+<pre><code>             precision    recall  f1-score   support
+
+          0       1.00      1.00      1.00        45
+          1       0.98      0.96      0.97        46
+          2       0.98      0.98      0.98        44
+          3       0.93      0.93      0.93        46
+          4       1.00      0.96      0.98        45
+          5       0.98      0.98      0.98        46
+          6       0.98      1.00      0.99        45
+          7       1.00      1.00      1.00        45
+          8       0.95      0.91      0.93        43
+          9       0.88      0.96      0.91        45
+
+avg / total       0.97      0.97      0.97       450
+</code></pre>
+
+<p>原始 kNN 实现的搜索方式简单粗暴: 线性扫描. 通过计算输入样本与每个训练样本的距离, 找到距离最近的 k 个点. 当训练数据较大时, 非常耗费时间. sklean 中实现了三种搜索方式, 分别是 <code>BallTree</code>, <code>KDTree</code>, <code>brute-force</code>. <code>KDTree</code> 是一颗二叉树, <code>BallTree</code> 是 <code>KDTree</code> 的优化版本, 而 <code>brute-force</code> 就是原始的暴力线性扫描. 这里要着重说明的是, <code>KDTree</code> 与 <code>BallTree</code> 虽然优化了搜索速度, 但牺牲了精确度. 因此对于小数据集(如 n &lt; 30), 使用 <code>brute-force</code> 仍然是一个最佳选择.</p>
+<p>使用 sklearn 提供的代码使用过程如下:</p>
+<pre><code class="py">import sklearn.datasets
+import sklearn.metrics
+import sklearn.model_selection
+import sklearn.neighbors
+
+digits = sklearn.datasets.load_digits()
+x_train, x_test, y_train, y_test = sklearn.model_selection.train_test_split(
+    digits.data, digits.target, test_size=0.25, random_state=0, stratify=digits.target)
+
+# 参数 algorithm 可以是 ['auto', 'ball_tree', 'kd_tree', 'brute'] 其中的一个
+# 此处使用默认值 'auto'
+# 参数 weights 可以是 ['uniform', 'distance'] 其中的一个.
+# uniform 为每个近邻分配统一的权重, 而 distance 分配权重与查询点的距离成反比.
+# 此处使用默认值 'uniform'
+nbrs = sklearn.neighbors.KNeighborsClassifier(n_neighbors=3)
+nbrs.fit(x_train, y_train)
+
+y_pred = nbrs.predict(x_test)
+
+acc = sklearn.metrics.classification_report(y_test, y_pred)
+print(acc)
+</code></pre>
+
+<h1 id="_3">回归</h1>
+<pre><code class="py">import numpy as np
+import matplotlib.pyplot as plt
+import sklearn.neighbors
+
+plt.style.use('seaborn')
+
+np.random.seed(0)
+X = np.sort(5 * np.random.rand(40, 1), axis=0)
+T = np.linspace(0, 5, 500)[:, np.newaxis]
+y = np.sin(X).ravel()
+# Add noise to targets
+y[::5] += 1 * (0.5 - np.random.rand(8))
+
+n_neighbors = 5
+for i, weights in enumerate(['uniform', 'distance']):
+    knn = sklearn.neighbors.KNeighborsRegressor(n_neighbors, weights=weights)
+    y_ = knn.fit(X, y).predict(T)
+
+    plt.subplot(2, 1, i + 1)
+    plt.scatter(X, y, c='k', label='data')
+    plt.plot(T, y_, c='g', label='prediction')
+    plt.axis('tight')
+    plt.legend()
+    plt.title(&quot;KNeighborsRegressor (k = %i, weights = '%s')&quot; % (n_neighbors,
+                                                                weights))
+plt.show()
+</code></pre>
+
+<p><img alt="img" src="/img/daze/sklearn/knn/regr.png" /></p>
+<h1 id="_4">参考</h1>
+<ul>
+<li>[1] wiki: 最近邻居法 <a href="https://zh.wikipedia.org/wiki/%E6%9C%80%E8%BF%91%E9%84%B0%E5%B1%85%E6%B3%95">https://zh.wikipedia.org/wiki/%E6%9C%80%E8%BF%91%E9%84%B0%E5%B1%85%E6%B3%95</a></li>
+<li>[2] 华校专/王正林: Python大战机器学习.第四章.k 近邻法</li>
+<li>[3] sklearn: 最近邻 <a href="http://sklearn.apachecn.org/cn/0.19.0/modules/neighbors.html">http://sklearn.apachecn.org/cn/0.19.0/modules/neighbors.html</a></li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../cluster/" class="btn btn-neutral float-right" title="sklearn-聚类">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../bayes/" class="btn btn-neutral" title="sklearn-贝叶斯分类器"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/mohanson/accu/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../bayes/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../cluster/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    
+    <script>var base_url = '../../../..';</script>
+    <script src="../../../../js/theme.js" defer></script>
+      <script src="../../../../js/accu.js" defer></script>
+      <script src="../../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+
+</body>
+</html>

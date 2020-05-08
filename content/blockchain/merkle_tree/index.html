@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Mohanson">
+  <link rel="canonical" href="http://accu.cc/content/blockchain/merkle_tree/">
+  <link rel="shortcut icon" href="../../../img/favicon.ico">
+  <title>Merkle Tree - Mohanson</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../../css/theme.css" />
+  <link rel="stylesheet" href="../../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  <link href="../../../css/accu.css" rel="stylesheet" />
+    
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Merkle Tree";
+    var mkdocs_page_input_path = "content/blockchain/merkle_tree.md";
+    var mkdocs_page_url = "/content/blockchain/merkle_tree/";
+  </script>
+  
+  <script src="../../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+    <script data-ad-client="ca-pub-5236818090688638" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+ 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../../.." class="icon icon-home"> Mohanson</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../..">主页</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">数字图像处理</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../pil/channel/">数字图像处理-通道</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../pil/mean/">数字图像处理-均值</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../pil/contrast/">数字图像处理-对比增强</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../pil/contrast_tensile/">数字图像处理-对比拉伸</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../pil/bit/">数字图像处理-位图切割</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../pil/histogram_equalization/">数字图像处理-直方图均衡化</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../pil/sub/">数字图像处理-图像减法</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../pil/agwn/">数字图像处理-加性高斯白噪声与去噪</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../pil/spatial_filter/">数字图像处理-空间滤波基础</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../pil/spatial_filter_mean/">数字图像处理-空间滤波-均值滤波</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../pil/spatial_filter_medium/">数字图像处理-空间滤波-中值滤波</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../pil/spatial_filter_sharpening/">数字图像处理-空间滤波-锐化滤波</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../pil/spatial_filter_gaussian_blur/">数字图像处理-空间滤波-高斯滤波</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../pil/frequency_filter/">数字图像处理-频域滤波基础</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../pil/frequency_filter_lpf/">数字图像处理-频域滤波-低通滤波</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../pil/frequency_filter_hpf/">数字图像处理-频域滤波-高通滤波</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../pil/frequency_filter_br_bp/">数字图像处理-频域滤波-带阻和带通滤波</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../pil/noise/">数字图像处理-噪声</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../pil/safe_color/">数字图像处理-安全色</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../pil/macaron_color/">数字图像处理-马卡龙色</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../pil/complementary_and_invert_color/">数字图像处理-补色和反色</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../pil/watermark/">数字图像处理-水印</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../pil/resize_nearst/">数字图像处理-缩放-最近邻插值法</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../pil/resize_nearst_ghost/">数字图像处理-缩放-最近邻插值法的幽灵事件</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../pil/resize_bilinear/">数字图像处理-缩放-双线性算法</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../pil/resize_bicubic/">数字图像处理-缩放-双三次插值法</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../pil/ascii/">数字图像处理-字符画</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../pil/pil_tutorial_overview/">Python-PIL-概览</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../pil/pil_image/">Python-PIL-Image</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../pil/pil_imagechops/">Python-PIL-ImageChops</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../pil/pil_imagecolor/">Python-PIL-ImageColor</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../pil/pil_imagedraw/">Python-PIL-ImageDraw</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../pil/pil_imageenhance/">Python-PIL-ImageEnhance</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../pil/pil_imageops/">Python-PIL-ImageOps</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">自己动手写 Game Boy 仿真器</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../gameboy/preface/">GB-前言</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../gameboy/history/emulator/">GB-虚拟机发展史-硬件仿真器</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../gameboy/history/runtime/">GB-虚拟机发展史-程序虚拟机</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../gameboy/history/simulator/">GB-虚拟机发展史-软件模拟器</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../gameboy/cartridge/about_cartridge/">GB-游戏卡带-漫谈卡带</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../gameboy/cartridge/cartridge_header/">GB-游戏卡带-Header</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../gameboy/cartridge/memory_bank_controller/">GB-游戏卡带-Memory Bank Controller</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../gameboy/cartridge/rom_only/">GB-游戏卡带-ROM only</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../gameboy/cartridge/mbc1/">GB-游戏卡带-MBC1</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../gameboy/cartridge/mbc2/">GB-游戏卡带-MBC2</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../gameboy/cartridge/mbc3/">GB-游戏卡带-MBC3</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../gameboy/cartridge/mbc5/">GB-游戏卡带-MBC5</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../gameboy/cartridge/others/">GB-游戏卡带-完整代码</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../gameboy/cpu/overview/">GB-CPU-概览</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../gameboy/cpu/alu/">GB-CPU-算术逻辑单元</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../gameboy/cpu/register/">GB-CPU-寄存器与存储系统</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../gameboy/cpu/isa/">GB-CPU-指令与指令集</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../gameboy/cpu/pipeline/">GB-CPU-流水线</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../gameboy/cpu/lr35902_standard/">GB-CPU-LR35902标准指令集</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../gameboy/cpu/lr35902_extension/">GB-CPU-LR35902扩展指令集</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../gameboy/cpu/cycles/">GB-CPU-LR35902时钟周期与频率仿真</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../gameboy/cpu/interrupts/">GB-CPU-LR35902中断</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../gameboy/cpu/mmu/">GB-CPU-内存管理单元与主板</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../gameboy/video/overview/">GB-视频-概览</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../gameboy/video/dot_matrix/">GB-视频-点阵图</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../gameboy/video/show/">GB-视频-显示输出</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../gameboy/video/crt/">GB-视频-光栅成像原理与概念</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../gameboy/video/system/">GB-视频-图像显示系统</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../gameboy/video/gpu/">GB-视频-GPU 寄存器与内存结构</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../gameboy/video/code/">GB-视频-代码实现</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../gameboy/audio/overview/">GB-音频-概览</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../gameboy/audio/sound/">GB-音频-声音的构成</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../gameboy/audio/cpal/">GB-音频-Rust Cpal 库介绍</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../gameboy/audio/concept/">GB-音频-音频系统概念简介</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../gameboy/audio/register/">GB-音频-寄存器</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../gameboy/audio/timer/">GB-音频-512 Hz 时钟信号</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../gameboy/audio/frame_sequence/">GB-音频-序列发生器</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../gameboy/audio/length_counter/">GB-音频-长度计数器</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../gameboy/audio/vol/">GB-音频-音量包络</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../gameboy/audio/frequency_sweep/">GB-音频-频率扫描器</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../gameboy/audio/square/">GB-音频-方波通道 1 & 2</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../gameboy/audio/wave/">GB-音频-可编程波形通道</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../gameboy/audio/noise/">GB-音频-白噪音通道</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../gameboy/audio/mixer/">GB-音频-混频器</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../gameboy/audio/play/">GB-音频-在计算机上播放</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../gameboy/other/joypad/">GB-其他-游戏手柄</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../gameboy/other/serial/">GB-其他-串行通行接口</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../gameboy/other/timer/">GB-其他-定时器</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../gameboy/other/init/">GB-其他-硬件初始化工作</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../gameboy/other/test/">GB-其他-测试</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../gameboy/foot/">GB-后记</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">算法</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../daze/ga/sga/">遗传算法-简单遗传算法</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../daze/ga/sga_optret/">遗传算法-最优保留策略</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../daze/ga/evolve/">遗传算法-生物进化模拟</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../daze/ga/fooled_nn/">遗传算法-愚弄神经网络</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../daze/dlib/install/">Dlib-安装</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../daze/dlib/face_detect/">Dlib-人脸检测</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../daze/dlib/face_landmark/">Dlib-人脸标注</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../daze/dlib/face_recognition/">Dlib-人脸识别</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../daze/dlib/face_clustering/">Dlib-人脸聚类</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../daze/rc4/overview/">加密算法-RC4-概览</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../daze/rc4/performance_testing/">加密算法-RC4-性能测试</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../daze/game_of_life/overview/">生命游戏</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../daze/sklearn/overview/">sklearn-概览</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../daze/sklearn/liner_model/overview/">sklearn-线性模型-概览</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../daze/sklearn/liner_model/linear_regression/">sklearn-线性模型-普通最小二乘法</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../daze/sklearn/liner_model/ridge/">sklearn-线性模型-岭回归</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../daze/sklearn/liner_model/logistic_regression/">sklearn-线性模型-逻辑回归</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../daze/sklearn/tree/">sklearn-决策树</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../daze/sklearn/bayes/">sklearn-贝叶斯分类器</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../daze/sklearn/knn/">sklearn-kNN</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../daze/sklearn/cluster/">sklearn-聚类</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../daze/sklearn/svm/">sklearn-SVM</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../daze/sklearn/manifold/">sklearn-流形学习</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../daze/sklearn/evaluation/">sklearn-评估</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../daze/ml/neural_style_transfer/">机器学习-图像风格转移</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../daze/ml/fasttext/">机器学习-快速文本分类</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../daze/ml/hog/">机器学习-HOG</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../daze/math/huffman/">Math-霍夫曼编码</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../daze/math/variance_and_sd/">Math-方差与标准差</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../daze/math/normal_distribution/">Math-正态分布</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../daze/math/kelly_formula/">Math-凯利公式</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">语言</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../py/np/split/">Python-np-分割与合并</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../py/plt/line/">Python-matplotlib-折线图</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../py/plt/scatter/">Python-matplotlib-散点图</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../py/plt/bar/">Python-matplotlib-柱状图</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../py/plt/pie/">Python-matplotlib-饼图</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../py/f_string/">Python-f-string</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../py/ctypes/overview/">Python-windows编程-概览</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../py/ctypes/recycle/">Python-windows编程-删除文件至回收站</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../py/setup/">Python-打包并发布代码至 PyPI</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../py/pywasm/overview/">Python-pywasm-美味尝鲜</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../py/pywasm/leb128/">Python-pywasm-LEB128</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../go/read_file/">Go-按行读取文件</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../go/socket/">Go-socket</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../go/socket_not_accept/">Go-socket-假如服务端不调用 Accept</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../go/tls/">Go-tls</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../go/socks5/">Go-socks-version-5</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../go/cross_compiling/">Go-交叉编译</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../go/end_of_time/">Go-时间尽头</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../go/token_bucket/">Go-流量限制</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../go/fswatch/">Go-目录监听</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../go/cgo/">Go-Cgo</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../ahk/overview/">AHK-概览</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../ahk/clicker/">AHK-实现鼠标连点器</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../ahk/color/">AHK-实现屏幕取色器</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../ahk/longpress/">AHK-长按</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../ahk/loopread/">AHK-按行读取文件</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../rust/overview/">Rust-概览</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../rust/io/">Rust-文件读取</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../rust/http/">Rust-HTTP</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../rust/concurrent/">Rust-并发</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../rust/tcp/">Rust-TCP</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../rust/json/">Rust-JSON</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">区块链</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../evm/">EVM</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Merkle Tree</a>
+    <ul class="current">
+    </ul>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">竹书纪年</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../diary/2019/">Y2019</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../diary/2020/">Y2020</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">演讲</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../speech/minits/">minits, 以 LLVM 为后端的 TypeScript 静态编译器</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../speech/blockchain_privacy_protection/">区块链隐私保护密码技术介绍</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../..">Mohanson</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>区块链 &raquo;</li>
+        
+      
+    
+    <li>Merkle Tree</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/mohanson/accu/edit/master/docs/content/blockchain/merkle_tree.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="_1">状态树在区块链中的作用</h1>
+<p>为了证明:</p>
+<ul>
+<li>一个虚假交易在花费一笔不存在的 UTXO(UTXO 模型)</li>
+<li>一个虚假交易被建立在一个虚假的 state root 上(账号模型)</li>
+<li>轻节点中, 证明某个状态存在</li>
+</ul>
+<h1 id="merkle-tree">Merkle Tree</h1>
+<p>首先, 让我们从默克尔树(Merkle Tree)的开始. 默克尔树提供了一种存储键值数据的方案, 我们首先对集合中的每个数据进行哈希处理, 然后继续沿树进行哈希处理, 直到到达根节点为止.</p>
+<p><img alt="img" src="/img/blockchain/merkle_tree/merkle_tree.png" /></p>
+<p><strong>特性</strong></p>
+<ul>
+<li>快速重哈希. 当树节点内容发生变化时, 能够在前一次哈希计算的基础上, 仅仅将被修改的树节点进行哈希重计算, 便能得到一个新的根哈希用来代表整棵树的状态.</li>
+</ul>
+<h1 id="merkle-proving">Merkle Proving</h1>
+<p>默克尔树的根只是一个哈希, 它"承诺"拥有某些数据, 但它并不实际告诉我们关于树的内容的任何信息. 我们可以使用一种称为默克尔证明(Merkle Prove)的手段来表明某些内容实际上是该树的一部分. 例如, 如果要证明 A 是树的一部分, 需要做的是:</p>
+<ol>
+<li>提供 A 的原始内容</li>
+<li>提供 Hash(B)</li>
+<li>提供 Hash(Hash(C) + Hash(D))</li>
+</ol>
+<p><img alt="img" src="/img/blockchain/merkle_tree/merkle_prove.png" /></p>
+<p>任何接收到以上信息的接收方, 都可以对提交的数据独立验证其计算结果是否等于已知的根哈希. 同时提出方只需要提供树的一部分而不必提供整颗树.</p>
+<h1 id="trie">Trie</h1>
+<p>前缀树(Trie)又称为字典树, 是一种有序树, 用于保存关联数据. 其中的键通常是字符串. 与二叉查找树不同, 键不是直接保存在节点中, 而是由节点在树中的位置决定. 一个节点的所有子孙都有相同的前缀, 也就是这个节点对应的字符串, 而根节点对应空字符串.</p>
+<p>如下是保存了字符串 "a", "b", "at", "atm", "ao" 的前缀树. 通常来说, 在实现前缀树的时候, 会在节点加入一个字段来表明其是否是一个完整单词.</p>
+<p><img alt="img" src="/img/blockchain/merkle_tree/trie.png" /></p>
+<p>前缀树常用于搜索提示. 如当输入一个网址, 可以自动搜索出可能的选择. 当没有完全匹配的搜索结果, 可以返回前缀最相似的可能.</p>
+<p><strong>特性</strong></p>
+<ul>
+<li>相比于哈希表, 使用前缀树来进行查询拥有共同前缀的数据时十分高效, 例如在字典中查找前缀为 pre 的单词, 对于哈希表来说, 需要遍历整个表, 时间效率为 O(n), 然而对于前缀树来说, 只需要在树中找到前缀为 pre 的节点, 且遍历以这个节点为根节点的子树即可. 但是对于最差的情况(前缀为空串), 时间效率为 O(n), 仍然需要遍历整棵树, 此时效率与哈希表相同. 相比于哈希表, 前缀树不会存在哈希冲突的问题.</li>
+<li>直接查找效率低下. 前缀树的查找效率是 O(m), m 为所查找节点的 key 长度, 而哈希表的查找效率为 O(1). 且一次查找会有 m 次 IO 开销, 相比于直接查找, 无论是速率还是对磁盘的压力都比较大.</li>
+<li>空间浪费. 当存在一个节点其 key 值内容很长(如一串很长的字符串), 当树中没有与他相同前缀的分支时, 为了存储该节点, 需要创建许多非叶子节点来构建根节点到该节点间的路径, 造成了存储空间的浪费.</li>
+</ul>
+<h1 id="radix-trie">Radix Trie</h1>
+<p>压缩前缀树(Radix Trie)是一种更节省空间的前缀树. 其中作为唯一子节点的每个节点都与其父节点合并, 节点之间的边既可以表示为元素序列又可以表示为单个元素. 压缩前缀树更适用于对于较小的集合(尤其是字符串很长的情况下)和有很长相同前缀的字符串集合.</p>
+<p><img alt="img" src="/img/blockchain/merkle_tree/radix_trie.png" /></p>
+<h1 id="merkle-patricia-tree">Merkle Patricia Tree</h1>
+<p>Merkle Patricia Tree 是以太坊 1.0 用于存储世界状态的数据结构, 它是一种经过改良且融合了 Merkle Tree 和 Radix Tree 两种树结构优点的数据结构. 它以 Radix Tree 为基础, 通过向数据结构添加一些额外的复杂性来解决效率低下的问题.</p>
+<p>Merkle Patricia Trie 中的节点有如下的种类:</p>
+<ul>
+<li>NULL(表示为空字符串)</li>
+<li>Branch(分支节点), 总共有 17 子项, 为 <code>[v0 ... v15, vt]</code></li>
+<li>Leaf(叶子节点), 总共有 2 个子项, 为 <code>[encodePath, value]</code></li>
+<li>Extension(扩展节点), 总共有 2 个子项, 为 <code>[encodePath, key]</code></li>
+</ul>
+<p><strong>Compact encoding of hex sequence with optional terminator</strong></p>
+<table>
+<thead>
+<tr>
+<th>hex char</th>
+<th>bits</th>
+<th>node type partial</th>
+<th>path length</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0000</td>
+<td>extension</td>
+<td>even</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0001</td>
+<td>extension</td>
+<td>odd</td>
+</tr>
+<tr>
+<td>2</td>
+<td>0010</td>
+<td>terminating (leaf)</td>
+<td>even</td>
+</tr>
+<tr>
+<td>3</td>
+<td>0011</td>
+<td>terminating (leaf)</td>
+<td>odd</td>
+</tr>
+</tbody>
+</table>
+<p>以一个简单的例子来表示 MPT 的构建过程, 假设我们想要一个包含四个键值对的树: ('do', 'verb'), ('dog', 'puppy'), ('doge', 'coin'), ('horse', 'stallion'). 在构建过程中, 需要将 key/value 表示为 16 进制格式.</p>
+<pre><code class="text">646f:       'verb'
+646f67:     'puppy'
+646f6765:   'coin'
+686f727365: 'stallion'
+</code></pre>
+
+<p>其前缀树可表示如下:</p>
+<pre><code class="text">6 -----&gt; 46f ....................... 'verb'
+  |          |-----&gt;67 ............. 'puppy'
+  |                    |-----&gt; 65 .. 'coin'
+  |----&gt; 86f727365 ................. 'stallion'
+</code></pre>
+
+<p>它的 MPT 树部分如下, 需要注意其键是经过 "Compact encoding of hex sequence with optional terminator" 的. 下图表示了 ('dog', 'puppy') 在树中的保存方式.</p>
+<p><img alt="img" src="/img/blockchain/merkle_tree/flow.png" /></p>
+<p>其整颗树以如下的键值对形式保存在数据库中:</p>
+<pre><code class="text">rootHash: [ &lt;16&gt;, hashA ]
+hashA:    [ &lt;&gt;, &lt;&gt;, &lt;&gt;, &lt;&gt;, hashB, &lt;&gt;, &lt;&gt;, &lt;&gt;, hashC, &lt;&gt;, &lt;&gt;, &lt;&gt;, &lt;&gt;, &lt;&gt;, &lt;&gt;, &lt;&gt;, &lt;&gt; ]
+hashC:    [ &lt;20 6f 72 73 65&gt;, 'stallion' ]
+hashB:    [ &lt;00 6f&gt;, hashD ]
+hashD:    [ &lt;&gt;, &lt;&gt;, &lt;&gt;, &lt;&gt;, &lt;&gt;, &lt;&gt;, hashE, &lt;&gt;, &lt;&gt;, &lt;&gt;, &lt;&gt;, &lt;&gt;, &lt;&gt;, &lt;&gt;, &lt;&gt;, &lt;&gt;, 'verb' ]
+hashE:    [ &lt;17&gt;, hashF ]
+hashF:    [ &lt;&gt;, &lt;&gt;, &lt;&gt;, &lt;&gt;, &lt;&gt;, &lt;&gt;, hashG, &lt;&gt;, &lt;&gt;, &lt;&gt;, &lt;&gt;, &lt;&gt;, &lt;&gt;, &lt;&gt;, &lt;&gt;, &lt;&gt;, 'puppy' ]
+hashG:    [ &lt;35&gt;, 'coin' ]
+</code></pre>
+
+<h1 id="sparse-merkle-tree">Sparse Merkle Tree</h1>
+<p>默克尔树可以证明一个数据包含在树中, 但它却无法证明一个数据<strong>不</strong>包含在树中. 稀疏的默克尔树(Sparse Merkle Tree)在这里发挥了作用. 稀疏的默克尔树类似于标准的默克尔树, 不同之处在于对包含的数据进行了索引, 并且每个数据点都放置在与该数据点的索引相对应的叶子上(即使这个叶子节点是空的).</p>
+<p>为了证明 C 不存在树中, 只需要像标准默克尔树的存在证明一样证明 C 为空就行了!</p>
+<p><img alt="img" src="/img/blockchain/merkle_tree/proving_none.png" /></p>
+<p><strong>特性</strong></p>
+<ul>
+<li>稀疏默克尔树真的非常稀疏, 因此需要花费大量的空间去存储它(2^256)!</li>
+<li>由于不是前缀树, 访问一个 key 值需要更多的 db read 次数.</li>
+<li>不但可以证明你拥有某个资产, 还可以证明你没有某个资产.</li>
+</ul>
+<p><strong>相关讨论</strong></p>
+<ul>
+<li><a href="https://ethereum.stackexchange.com/questions/57761/eli5-sparse-merkle-trees-on-sharding">https://ethereum.stackexchange.com/questions/57761/eli5-sparse-merkle-trees-on-sharding</a><ul>
+<li>SMT 几乎可以在使用(或计划使用) Merkle Patricia Tries 的任何地方实现替换</li>
+<li>以太坊的 MPT 的实施和使用都非常复杂, SMT 方式更简单, 效率也差不多</li>
+</ul>
+</li>
+<li><a href="https://ethresear.ch/t/data-availability-proof-friendly-state-tree-transitions/1453">https://ethresear.ch/t/data-availability-proof-friendly-state-tree-transitions/1453</a><ul>
+<li>文中指出默克尔树的一个问题, 即一个恶意矿工可以创建带有欺诈性 state root 的区块链, 该状态树根与该区块中的交易进行的状态转换不匹配, 因此没有人能够找到证明该树中包含任何状态的证据, 或者证明树中包含欺诈性的状态, 因为他们没有相关数据. 虽然可以通过提供整个状态树的数据可用性证明来防止这种情况, 但是, 这要求节点在每个块中广播系统的整个状态, 这当然不是很有效. 解决办法是在 Block Header 中包含多个中间 state root 而非一个最终的 state root.</li>
+<li>SMT 的优化的解决方案: <a href="https://www.links.org/files/RevocationTransparency.pdf">https://www.links.org/files/RevocationTransparency.pdf</a>, <a href="https://eprint.iacr.org/2016/683.pdf">https://eprint.iacr.org/2016/683.pdf</a>, 简单来说就是提前存储 Hash(Null), Hash(Hash(Null) + Hash(Null) ... ) ...</li>
+<li>SMT 的一个状态转换时间复杂度永远固定是 O(log(n)), 且 "Sparse merkle trees are used because they do not have to be rebalanced".</li>
+<li>Vitalik 在评论做了分析, 认为:<ul>
+<li>Proof 证明的大小应该与 MPT 相当</li>
+<li>从概念上, SMT 与 MPT 所能实现的功能几乎完全一样, 但胜在实现简单, 有<strong>巨大</strong>优势.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="https://www.deadalnix.me/2016/09/24/introducing-merklix-tree-as-an-unordered-merkle-tree-on-steroid/">https://www.deadalnix.me/2016/09/24/introducing-merklix-tree-as-an-unordered-merkle-tree-on-steroid/</a><ul>
+<li>MPT 在集合的中间插入或删除一个元素将需要大量的运算, 如果需要 2 个包含相同元素的集合, 但是以不同的顺序插入将产生 2 个根本不同的树.</li>
+<li>同一组元素总是会产生同样的根, 这对于很难维护一致性的系统非常重要, 这在分布式系统中很常见. 无论它们如何到达, 系统的节点最终都将收敛到相同的集合和相同的根.</li>
+</ul>
+</li>
+<li><a href="https://medium.com/@ouvrard.pierre.alain/sparse-merkle-tree-86e6e2fc26da">https://medium.com/@ouvrard.pierre.alain/sparse-merkle-tree-86e6e2fc26da</a><ul>
+<li>SMT 可以并发更新键值. "The keys should be sorted in an array, and the corresponding values should be at the same index in a separate array",  相关代码实现在 <a href="https://github.com/aergoio/SMT">https://github.com/aergoio/SMT</a>.</li>
+</ul>
+</li>
+<li><a href="https://ethresear.ch/t/optimizing-sparse-merkle-trees/3751">https://ethresear.ch/t/optimizing-sparse-merkle-trees/3751</a>, SMT 的优化技巧<ul>
+<li>zero branch 的预计算</li>
+<li>如果有一个只有一个元素的子树, 我们可以简单地存储一条记录, 该记录说明值是什么, 键是什么以及哈希是什么(以避免必须重新计算). 它可以将 db read 操作次数降低至和 MPT 一样.</li>
+<li>使用 Hex 作为键而非二叉树, 可以使 db read 次数降低 3-4 倍</li>
+<li>plasma 团队已经实现了该文章提高的全部优化</li>
+<li>Does the further design you describe require changing the on-chain verifier? No. The consensus rules are 100% the same, the hashes are 100% the same, the proofs are 100% the same, it’s a purely voluntary client-side change that different clients can implement differently. This is precisely why this is interesting.</li>
+<li>如果约定 H(0, 0) = 0, 则是一个巨大的性能优化!</li>
+</ul>
+</li>
+<li><a href="https://github.com/ethereum/eth2.0-specs/issues/1472">https://github.com/ethereum/eth2.0-specs/issues/1472</a></li>
+</ul>
+<h1 id="smt-libra">SMT 在 Libra 中的实现</h1>
+<p>源码: <a href="https://github.com/libra/libra/tree/master/storage/jellyfish-merkle/src">https://github.com/libra/libra/tree/master/storage/jellyfish-merkle/src</a></p>
+<p><img alt="img" src="/img/blockchain/merkle_tree/libra_smt.png" /></p>
+<p>Libra SMT 一共有三种节点, 与 MPT 基本一致.</p>
+<ul>
+<li>Branch</li>
+<li>Extension</li>
+<li>Leaf</li>
+</ul>
+<p>由于添加了叶节点, 并且 Branch 是前缀式的, 以太坊社区将之称为"稀疏紧凑型默克尔树"(两个反义词在一起却毫无违和感, 居然还能理解是什么意思...).</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../diary/2019/" class="btn btn-neutral float-right" title="Y2019">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../evm/" class="btn btn-neutral" title="EVM"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/mohanson/accu/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../evm/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../../diary/2019/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="../../../js/accu.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+
+</body>
+</html>
