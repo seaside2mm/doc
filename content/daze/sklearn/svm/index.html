@@ -1,0 +1,1209 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="视觉">
+      
+      
+        <link rel="canonical" href="https://seaside2mm.github.io/doc/content/daze/sklearn/svm/">
+      
+      
+        <meta name="author" content="seaside">
+      
+      <link rel="shortcut icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-5.1.5">
+    
+    
+      
+        <title>sklearn-SVM - seaside</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.df84b5fe.min.css">
+      
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../../../css/accu.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#svm" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://seaside2mm.github.io/doc/" title="seaside" class="md-header-nav__button md-logo" aria-label="seaside">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            seaside
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              sklearn-SVM
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://seaside2mm.github.io/doc/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Seaside2Mm
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://seaside2mm.github.io/doc/" title="seaside" class="md-nav__button md-logo" aria-label="seaside">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    seaside
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://seaside2mm.github.io/doc/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Seaside2Mm
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../.." title="主页" class="md-nav__link">
+      主页
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      数字图像处理
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="数字图像处理" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        数字图像处理
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../pil/contrast.md" title="数字图像处理-对比增强" class="md-nav__link">
+      数字图像处理-对比增强
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../pil/contrast_tensile.md" title="数字图像处理-对比拉伸" class="md-nav__link">
+      数字图像处理-对比拉伸
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../pil/bit.md" title="数字图像处理-位图切割" class="md-nav__link">
+      数字图像处理-位图切割
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../pil/histogram_equalization.md" title="数字图像处理-直方图均衡化" class="md-nav__link">
+      数字图像处理-直方图均衡化
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../pil/sub.md" title="数字图像处理-图像减法" class="md-nav__link">
+      数字图像处理-图像减法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../pil/agwn.md" title="数字图像处理-加性高斯白噪声与去噪" class="md-nav__link">
+      数字图像处理-加性高斯白噪声与去噪
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../pil/spatial_filter.md" title="数字图像处理-空间滤波基础" class="md-nav__link">
+      数字图像处理-空间滤波基础
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../pil/spatial_filter_mean.md" title="数字图像处理-空间滤波-均值滤波" class="md-nav__link">
+      数字图像处理-空间滤波-均值滤波
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../pil/spatial_filter_medium.md" title="数字图像处理-空间滤波-中值滤波" class="md-nav__link">
+      数字图像处理-空间滤波-中值滤波
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../pil/spatial_filter_sharpening.md" title="数字图像处理-空间滤波-锐化滤波" class="md-nav__link">
+      数字图像处理-空间滤波-锐化滤波
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../pil/spatial_filter_gaussian_blur.md" title="数字图像处理-空间滤波-高斯滤波" class="md-nav__link">
+      数字图像处理-空间滤波-高斯滤波
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../pil/frequency_filter.md" title="数字图像处理-频域滤波基础" class="md-nav__link">
+      数字图像处理-频域滤波基础
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../pil/frequency_filter_lpf.md" title="数字图像处理-频域滤波-低通滤波" class="md-nav__link">
+      数字图像处理-频域滤波-低通滤波
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../pil/frequency_filter_hpf.md" title="数字图像处理-频域滤波-高通滤波" class="md-nav__link">
+      数字图像处理-频域滤波-高通滤波
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../pil/frequency_filter_br_bp.md" title="数字图像处理-频域滤波-带阻和带通滤波" class="md-nav__link">
+      数字图像处理-频域滤波-带阻和带通滤波
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../pil/noise.md" title="数字图像处理-噪声" class="md-nav__link">
+      数字图像处理-噪声
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../pil/safe_color.md" title="数字图像处理-安全色" class="md-nav__link">
+      数字图像处理-安全色
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../pil/macaron_color.md" title="数字图像处理-马卡龙色" class="md-nav__link">
+      数字图像处理-马卡龙色
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../pil/complementary_and_invert_color.md" title="数字图像处理-补色和反色" class="md-nav__link">
+      数字图像处理-补色和反色
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../pil/watermark.md" title="数字图像处理-水印" class="md-nav__link">
+      数字图像处理-水印
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../pil/resize_nearst.md" title="数字图像处理-缩放-最近邻插值法" class="md-nav__link">
+      数字图像处理-缩放-最近邻插值法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../pil/resize_nearst_ghost.md" title="数字图像处理-缩放-最近邻插值法的幽灵事件" class="md-nav__link">
+      数字图像处理-缩放-最近邻插值法的幽灵事件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../pil/resize_bilinear.md" title="数字图像处理-缩放-双线性算法" class="md-nav__link">
+      数字图像处理-缩放-双线性算法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../pil/resize_bicubic.md" title="数字图像处理-缩放-双三次插值法" class="md-nav__link">
+      数字图像处理-缩放-双三次插值法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../pil/ascii.md" title="数字图像处理-字符画" class="md-nav__link">
+      数字图像处理-字符画
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../pil/pil_tutorial_overview.md" title="Python-PIL-概览" class="md-nav__link">
+      Python-PIL-概览
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../pil/pil_image.md" title="Python-PIL-Image" class="md-nav__link">
+      Python-PIL-Image
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../pil/pil_imagechops.md" title="Python-PIL-ImageChops" class="md-nav__link">
+      Python-PIL-ImageChops
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../pil/pil_imagecolor.md" title="Python-PIL-ImageColor" class="md-nav__link">
+      Python-PIL-ImageColor
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../pil/pil_imagedraw.md" title="Python-PIL-ImageDraw" class="md-nav__link">
+      Python-PIL-ImageDraw
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../pil/pil_imageenhance.md" title="Python-PIL-ImageEnhance" class="md-nav__link">
+      Python-PIL-ImageEnhance
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../pil/pil_imageops.md" title="Python-PIL-ImageOps" class="md-nav__link">
+      Python-PIL-ImageOps
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+    
+    <label class="md-nav__link" for="nav-3">
+      算法
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="算法" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        算法
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ga/sga/" title="遗传算法-简单遗传算法" class="md-nav__link">
+      遗传算法-简单遗传算法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ga/sga_optret/" title="遗传算法-最优保留策略" class="md-nav__link">
+      遗传算法-最优保留策略
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ga/evolve/" title="遗传算法-生物进化模拟" class="md-nav__link">
+      遗传算法-生物进化模拟
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ga/fooled_nn/" title="遗传算法-愚弄神经网络" class="md-nav__link">
+      遗传算法-愚弄神经网络
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../dlib/install/" title="Dlib-安装" class="md-nav__link">
+      Dlib-安装
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../dlib/face_detect/" title="Dlib-人脸检测" class="md-nav__link">
+      Dlib-人脸检测
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../dlib/face_landmark/" title="Dlib-人脸标注" class="md-nav__link">
+      Dlib-人脸标注
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../dlib/face_recognition/" title="Dlib-人脸识别" class="md-nav__link">
+      Dlib-人脸识别
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../dlib/face_clustering/" title="Dlib-人脸聚类" class="md-nav__link">
+      Dlib-人脸聚类
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../rc4/overview/" title="加密算法-RC4-概览" class="md-nav__link">
+      加密算法-RC4-概览
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../rc4/performance_testing/" title="加密算法-RC4-性能测试" class="md-nav__link">
+      加密算法-RC4-性能测试
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../game_of_life/overview/" title="生命游戏" class="md-nav__link">
+      生命游戏
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../overview/" title="sklearn-概览" class="md-nav__link">
+      sklearn-概览
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../liner_model/overview/" title="sklearn-线性模型-概览" class="md-nav__link">
+      sklearn-线性模型-概览
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../liner_model/linear_regression/" title="sklearn-线性模型-普通最小二乘法" class="md-nav__link">
+      sklearn-线性模型-普通最小二乘法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../liner_model/ridge/" title="sklearn-线性模型-岭回归" class="md-nav__link">
+      sklearn-线性模型-岭回归
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../liner_model/logistic_regression/" title="sklearn-线性模型-逻辑回归" class="md-nav__link">
+      sklearn-线性模型-逻辑回归
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../tree/" title="sklearn-决策树" class="md-nav__link">
+      sklearn-决策树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../bayes/" title="sklearn-贝叶斯分类器" class="md-nav__link">
+      sklearn-贝叶斯分类器
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../knn/" title="sklearn-kNN" class="md-nav__link">
+      sklearn-kNN
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../cluster/" title="sklearn-聚类" class="md-nav__link">
+      sklearn-聚类
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+    <a href="./" title="sklearn-SVM" class="md-nav__link md-nav__link--active">
+      sklearn-SVM
+    </a>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../manifold/" title="sklearn-流形学习" class="md-nav__link">
+      sklearn-流形学习
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../evaluation/" title="sklearn-评估" class="md-nav__link">
+      sklearn-评估
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ml/neural_style_transfer/" title="机器学习-图像风格转移" class="md-nav__link">
+      机器学习-图像风格转移
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ml/fasttext/" title="机器学习-快速文本分类" class="md-nav__link">
+      机器学习-快速文本分类
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ml/hog/" title="机器学习-HOG" class="md-nav__link">
+      机器学习-HOG
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../math/huffman/" title="Math-霍夫曼编码" class="md-nav__link">
+      Math-霍夫曼编码
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../math/variance_and_sd/" title="Math-方差与标准差" class="md-nav__link">
+      Math-方差与标准差
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../math/normal_distribution/" title="Math-正态分布" class="md-nav__link">
+      Math-正态分布
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../math/kelly_formula/" title="Math-凯利公式" class="md-nav__link">
+      Math-凯利公式
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  
+                
+                
+                <h1 id="svm">SVM</h1>
+<p>SVM(支持向量机)可用与分类, 回归与异常检测.</p>
+<p>对于二维数据的二分类问题而言, 一个普通的 SVM 就是一条直线，用来完美划分两类. 但是, 能同时划分两类数据的直线有无数多条, 我们需要的是恰好在两类数据的中间, 距离两个类的点一样远的直线. 我们称它为 <strong>最优分类超平面</strong>. 对于二维数据而言, 最优分类超平面是一条直线, 但是对三维数据而言, 最优分类超平面是一个面(即 N 维数据的最优分类超平面为 N-1 维).</p>
+<p><strong>什么是 SVM</strong></p>
+<p><img alt="img" src="/img/daze/sklearn/svm/appear1.jpg" /></p>
+<p>寻找一条离苹果和香蕉之间距离(margin)最大的直线. 其中距离, 即点到直线的距离; 约束条件为所有苹果和香蕉到直线的距离大于等于 margin.
+用数学表达式表示:</p>
+<p>$$
+y_i(w^Tx_i+b) \ge 1, \forall i
+$$</p>
+<p><strong>如果香蕉和苹果不能用直线分割呢?</strong></p>
+<p><img alt="img" src="/img/daze/sklearn/svm/appear2.jpg" /></p>
+<p>低维非线性的分界线其实在高维是可以线性分割. 设想在二维空间中的如果样本向量 v 距离原点(0, 0)的距离为 1 以内分类被标记为 0, 其余都是1, 同样是在二维的情况下是线性不可分得, 此时可以构造一个这样的函数:</p>
+<p>$$
+f(x, y) = 
+\begin{cases}
+    1 &amp; x^2+y^2 \ge 1 \\
+    0 &amp; x^2+y^2&lt;1
+\end{cases}
+$$</p>
+<p>即 $z=x^2+y^2$, 此时二维空间线性不可分的点在三维空间中线性可分. 这个构造的过程 SVM 有通用的方法可以解决, 就是使用核函数进行构造. 几个常用的核函数如线性核函数, 多项式核函数, 径向基核函数, 高斯核函数等.</p>
+<p>核函数的目的很明确: 就是在当前维度空间中的样本线性不可分的就一律映射到高维中去, 在高维空间中找到超平面, 得到超平面方程. 而在更高维的超平面上的方程实际上并没有增加更多的维度变量. 例如, 在研究二维空间上的向量分类问题时, 经过核函数映射, 最后得到的超平面变成了二维空间中的曲线(但同时也是三维空间中的一次方程).</p>
+<p><strong>如果香蕉和苹果有交集呢?</strong></p>
+<p><img alt="img" src="/img/daze/sklearn/svm/appear3.jpg" /></p>
+<p>即使做了升维, 香蕉与苹果依然不能线性分割. 我们需要调整模型, 以使得在保证不可分的情况下, 尽量找到最优分类超平面. 通常状态下, 一个离群点(可能是噪声)可以造成超平面的移动, 间隔缩小, 以前的模型对噪声非常敏感. 再有甚者, 如果离群点在另外一个类中, 那么这时候就是线性不可分了.</p>
+<p>这时候我们应该允许一些点游离并在在模型中违背限制条件(函数间隔大于 1). 通过引入<strong>松弛变量</strong>允许错误的分类.</p>
+<p>$$
+y_i(w^Tx_i+b) \ge 1-\varepsilon_i, \forall i
+$$</p>
+<p>$\varepsilon_i$ 为允许 $x_i$ 偏移分类平面的距离.</p>
+<p><strong>如果还有梨呢?</strong></p>
+<p><img alt="img" src="/img/daze/sklearn/svm/appear4.jpg" /></p>
+<p>可以每个类别做一次SVM: 是苹果还是不是苹果? 是香蕉还是不是香蕉? 是梨子还是不是梨子? 从中选出可能性最大的. 这是 <strong>one-versus-the-rest approach</strong>.</p>
+<p>也可以两两做一次SVM: 是苹果还是香蕉? 是香蕉还是梨子? 是梨子还是苹果? 最后三个分类器投票决定. 这是 <strong>one-versus-one approace</strong>.</p>
+<h1 id="_1">代码实现</h1>
+<pre><code class="py">import matplotlib.pyplot as plt
+import sklearn.datasets
+import sklearn.svm
+import sklearn.metrics
+import sklearn.model_selection
+import numpy as np
+plt.style.use('seaborn')
+
+# 生成 512 个数据点, 所有数据以高斯分布形式分布在两个中心附近
+x, y = sklearn.datasets.make_blobs(n_samples=512, centers=2, random_state=170)
+
+# 分别测试核函数为 ['linear', 'poly', 'rbf', 'sigmoid']
+for i, kernel in enumerate(['linear', 'poly', 'rbf', 'sigmoid']):
+    plt.subplot(221 + i)
+
+    clf = sklearn.svm.SVC(kernel=kernel)
+    clf.fit(x, y)
+
+    h = 0.02
+    x_min, x_max = x[:, 0].min() - 1, x[:, 0].max() + 1
+    y_min, y_max = x[:, 1].min() - 1, x[:, 1].max() + 1
+    xx, yy = np.meshgrid(np.arange(x_min, x_max, h), np.arange(y_min, y_max, h))
+    z = clf.predict(np.c_[xx.ravel(), yy.ravel()])
+    z = z.reshape(xx.shape)
+
+    plt.pcolormesh(xx, yy, z, cmap='Paired', alpha=0.5)
+    plt.scatter(x[:, 0], x[:, 1], c=y, cmap='Paired', edgecolors='k')
+    plt.axis('off')
+
+plt.show()
+</code></pre>
+
+<p><img alt="img" src="/img/daze/sklearn/svm/kernels.png" /></p>
+<h1 id="_2">后记</h1>
+<p>最近渐渐感到力不从心, 越深入发现涉及到的数学推导越多, 奈何精力有限, 往往只能浅尝辄止, 很多时候更是懒的看. 啊, 我已经是只废叶子了.</p>
+<h1 id="_3">参考</h1>
+<ul>
+<li>[1] sklearn: 支持向量机 <a href="http://sklearn.apachecn.org/cn/0.19.0/modules/svm.html">http://sklearn.apachecn.org/cn/0.19.0/modules/svm.html</a></li>
+<li>[2] 靠靠靠谱: 支持向量机(SVM)是什么意思? <a href="https://www.zhihu.com/question/21094489/answer/117246987">https://www.zhihu.com/question/21094489/answer/117246987</a></li>
+</ul>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../cluster/" title="sklearn-聚类" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                sklearn-聚类
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../manifold/" title="sklearn-流形学习" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                sklearn-流形学习
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../../assets/javascripts/vendor.83fe6e3c.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.7e1cb91c.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../../../..",
+          features: [],
+          search: Object.assign({
+            worker: "../../../../assets/javascripts/worker/search.37585f48.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="../../../../js/accu.js"></script>
+      
+    
+  </body>
+</html>

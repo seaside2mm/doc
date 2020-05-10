@@ -1,0 +1,1619 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="视觉">
+      
+      
+        <link rel="canonical" href="https://seaside2mm.github.io/doc/content/cv/1-Mat%E5%9F%BA%E6%9C%AC/">
+      
+      
+        <meta name="author" content="BY Seaside">
+      
+      <link rel="shortcut icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-5.1.5">
+    
+    
+      
+        <title>OpenCV与基础数字图像处理系列1-Mat基础</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.df84b5fe.min.css">
+      
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../../css/accu.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1-mat" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://seaside2mm.github.io/doc/" title="seaside" class="md-header-nav__button md-logo" aria-label="seaside">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            seaside
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              OpenCV与基础数字图像处理系列1-Mat基础
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://seaside2mm.github.io/doc/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Seaside2Mm
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://seaside2mm.github.io/doc/" title="seaside" class="md-nav__button md-logo" aria-label="seaside">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    seaside
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://seaside2mm.github.io/doc/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Seaside2Mm
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../.." title="主页" class="md-nav__link">
+      主页
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      数字图像处理
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="数字图像处理" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        数字图像处理
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../pil/contrast.md" title="数字图像处理-对比增强" class="md-nav__link">
+      数字图像处理-对比增强
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../pil/contrast_tensile.md" title="数字图像处理-对比拉伸" class="md-nav__link">
+      数字图像处理-对比拉伸
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../pil/bit.md" title="数字图像处理-位图切割" class="md-nav__link">
+      数字图像处理-位图切割
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../pil/histogram_equalization.md" title="数字图像处理-直方图均衡化" class="md-nav__link">
+      数字图像处理-直方图均衡化
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../pil/sub.md" title="数字图像处理-图像减法" class="md-nav__link">
+      数字图像处理-图像减法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../pil/agwn.md" title="数字图像处理-加性高斯白噪声与去噪" class="md-nav__link">
+      数字图像处理-加性高斯白噪声与去噪
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../pil/spatial_filter.md" title="数字图像处理-空间滤波基础" class="md-nav__link">
+      数字图像处理-空间滤波基础
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../pil/spatial_filter_mean.md" title="数字图像处理-空间滤波-均值滤波" class="md-nav__link">
+      数字图像处理-空间滤波-均值滤波
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../pil/spatial_filter_medium.md" title="数字图像处理-空间滤波-中值滤波" class="md-nav__link">
+      数字图像处理-空间滤波-中值滤波
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../pil/spatial_filter_sharpening.md" title="数字图像处理-空间滤波-锐化滤波" class="md-nav__link">
+      数字图像处理-空间滤波-锐化滤波
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../pil/spatial_filter_gaussian_blur.md" title="数字图像处理-空间滤波-高斯滤波" class="md-nav__link">
+      数字图像处理-空间滤波-高斯滤波
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../pil/frequency_filter.md" title="数字图像处理-频域滤波基础" class="md-nav__link">
+      数字图像处理-频域滤波基础
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../pil/frequency_filter_lpf.md" title="数字图像处理-频域滤波-低通滤波" class="md-nav__link">
+      数字图像处理-频域滤波-低通滤波
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../pil/frequency_filter_hpf.md" title="数字图像处理-频域滤波-高通滤波" class="md-nav__link">
+      数字图像处理-频域滤波-高通滤波
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../pil/frequency_filter_br_bp.md" title="数字图像处理-频域滤波-带阻和带通滤波" class="md-nav__link">
+      数字图像处理-频域滤波-带阻和带通滤波
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../pil/noise.md" title="数字图像处理-噪声" class="md-nav__link">
+      数字图像处理-噪声
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../pil/safe_color.md" title="数字图像处理-安全色" class="md-nav__link">
+      数字图像处理-安全色
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../pil/macaron_color.md" title="数字图像处理-马卡龙色" class="md-nav__link">
+      数字图像处理-马卡龙色
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../pil/complementary_and_invert_color.md" title="数字图像处理-补色和反色" class="md-nav__link">
+      数字图像处理-补色和反色
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../pil/watermark.md" title="数字图像处理-水印" class="md-nav__link">
+      数字图像处理-水印
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../pil/resize_nearst.md" title="数字图像处理-缩放-最近邻插值法" class="md-nav__link">
+      数字图像处理-缩放-最近邻插值法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../pil/resize_nearst_ghost.md" title="数字图像处理-缩放-最近邻插值法的幽灵事件" class="md-nav__link">
+      数字图像处理-缩放-最近邻插值法的幽灵事件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../pil/resize_bilinear.md" title="数字图像处理-缩放-双线性算法" class="md-nav__link">
+      数字图像处理-缩放-双线性算法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../pil/resize_bicubic.md" title="数字图像处理-缩放-双三次插值法" class="md-nav__link">
+      数字图像处理-缩放-双三次插值法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../pil/ascii.md" title="数字图像处理-字符画" class="md-nav__link">
+      数字图像处理-字符画
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../pil/pil_tutorial_overview.md" title="Python-PIL-概览" class="md-nav__link">
+      Python-PIL-概览
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../pil/pil_image.md" title="Python-PIL-Image" class="md-nav__link">
+      Python-PIL-Image
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../pil/pil_imagechops.md" title="Python-PIL-ImageChops" class="md-nav__link">
+      Python-PIL-ImageChops
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../pil/pil_imagecolor.md" title="Python-PIL-ImageColor" class="md-nav__link">
+      Python-PIL-ImageColor
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../pil/pil_imagedraw.md" title="Python-PIL-ImageDraw" class="md-nav__link">
+      Python-PIL-ImageDraw
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../pil/pil_imageenhance.md" title="Python-PIL-ImageEnhance" class="md-nav__link">
+      Python-PIL-ImageEnhance
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../pil/pil_imageops.md" title="Python-PIL-ImageOps" class="md-nav__link">
+      Python-PIL-ImageOps
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      算法
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="算法" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        算法
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../daze/ga/sga/" title="遗传算法-简单遗传算法" class="md-nav__link">
+      遗传算法-简单遗传算法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../daze/ga/sga_optret/" title="遗传算法-最优保留策略" class="md-nav__link">
+      遗传算法-最优保留策略
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../daze/ga/evolve/" title="遗传算法-生物进化模拟" class="md-nav__link">
+      遗传算法-生物进化模拟
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../daze/ga/fooled_nn/" title="遗传算法-愚弄神经网络" class="md-nav__link">
+      遗传算法-愚弄神经网络
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../daze/dlib/install/" title="Dlib-安装" class="md-nav__link">
+      Dlib-安装
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../daze/dlib/face_detect/" title="Dlib-人脸检测" class="md-nav__link">
+      Dlib-人脸检测
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../daze/dlib/face_landmark/" title="Dlib-人脸标注" class="md-nav__link">
+      Dlib-人脸标注
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../daze/dlib/face_recognition/" title="Dlib-人脸识别" class="md-nav__link">
+      Dlib-人脸识别
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../daze/dlib/face_clustering/" title="Dlib-人脸聚类" class="md-nav__link">
+      Dlib-人脸聚类
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../daze/rc4/overview/" title="加密算法-RC4-概览" class="md-nav__link">
+      加密算法-RC4-概览
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../daze/rc4/performance_testing/" title="加密算法-RC4-性能测试" class="md-nav__link">
+      加密算法-RC4-性能测试
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../daze/game_of_life/overview/" title="生命游戏" class="md-nav__link">
+      生命游戏
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../daze/sklearn/overview/" title="sklearn-概览" class="md-nav__link">
+      sklearn-概览
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../daze/sklearn/liner_model/overview/" title="sklearn-线性模型-概览" class="md-nav__link">
+      sklearn-线性模型-概览
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../daze/sklearn/liner_model/linear_regression/" title="sklearn-线性模型-普通最小二乘法" class="md-nav__link">
+      sklearn-线性模型-普通最小二乘法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../daze/sklearn/liner_model/ridge/" title="sklearn-线性模型-岭回归" class="md-nav__link">
+      sklearn-线性模型-岭回归
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../daze/sklearn/liner_model/logistic_regression/" title="sklearn-线性模型-逻辑回归" class="md-nav__link">
+      sklearn-线性模型-逻辑回归
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../daze/sklearn/tree/" title="sklearn-决策树" class="md-nav__link">
+      sklearn-决策树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../daze/sklearn/bayes/" title="sklearn-贝叶斯分类器" class="md-nav__link">
+      sklearn-贝叶斯分类器
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../daze/sklearn/knn/" title="sklearn-kNN" class="md-nav__link">
+      sklearn-kNN
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../daze/sklearn/cluster/" title="sklearn-聚类" class="md-nav__link">
+      sklearn-聚类
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../daze/sklearn/svm/" title="sklearn-SVM" class="md-nav__link">
+      sklearn-SVM
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../daze/sklearn/manifold/" title="sklearn-流形学习" class="md-nav__link">
+      sklearn-流形学习
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../daze/sklearn/evaluation/" title="sklearn-评估" class="md-nav__link">
+      sklearn-评估
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../daze/ml/neural_style_transfer/" title="机器学习-图像风格转移" class="md-nav__link">
+      机器学习-图像风格转移
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../daze/ml/fasttext/" title="机器学习-快速文本分类" class="md-nav__link">
+      机器学习-快速文本分类
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../daze/ml/hog/" title="机器学习-HOG" class="md-nav__link">
+      机器学习-HOG
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../daze/math/huffman/" title="Math-霍夫曼编码" class="md-nav__link">
+      Math-霍夫曼编码
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../daze/math/variance_and_sd/" title="Math-方差与标准差" class="md-nav__link">
+      Math-方差与标准差
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../daze/math/normal_distribution/" title="Math-正态分布" class="md-nav__link">
+      Math-正态分布
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../daze/math/kelly_formula/" title="Math-凯利公式" class="md-nav__link">
+      Math-凯利公式
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    成员变量
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    图像格式
+  </a>
+  
+    <nav class="md-nav" aria-label="图像格式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1.深度
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    2.通道数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    3.数据类型
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  
+                
+                
+                <p>http://opencv.jp/cookbook/index.html</p>
+<p><a href="https://docs.opencv.org/4.1.1/d9/df8/tutorial_root.html">官方文档</a></p>
+<h1 id="1-mat">1. Mat概要</h1>
+<blockquote>
+<p>由两个数据部分构成，矩阵头（包含矩阵尺寸，存储方法，存储地址等等）和一个指向存储所有像素值的矩阵的指针</p>
+</blockquote>
+<h2 id="_1">成员变量</h2>
+<pre><code class="c++">int cv::Mat::cols;     //返回矩阵的列数 
+int cv::Mat::rows      // 返回矩阵行数 
+uchar* cv::Mat::data   // 指向矩阵的数据单元的指针 
+int cv::Mat::dims      // 返回矩阵维度，该维度≥2 
+MatSize cv::Mat::size  // 返回矩阵大小
+</code></pre>
+
+<h2 id="_2">图像格式</h2>
+<h4 id="1">1.深度</h4>
+<blockquote>
+<p><code>depth()</code> : 图像位深度=比特数+数据类型； </p>
+</blockquote>
+<p>下表是返回值以及对应含义</p>
+<table>
+<thead>
+<tr>
+<th align="left">图像深度</th>
+<th align="left">枚举数值</th>
+<th align="left">空间大小</th>
+<th align="left">范围</th>
+<th align="left">等同C++变量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">CV_8U</td>
+<td align="left">0</td>
+<td align="left">8bits</td>
+<td align="left">0~255</td>
+<td align="left">unsigned char</td>
+</tr>
+<tr>
+<td align="left">CV_8S</td>
+<td align="left">1</td>
+<td align="left">8bits</td>
+<td align="left">-128~127</td>
+<td align="left">char</td>
+</tr>
+<tr>
+<td align="left">CV_16U</td>
+<td align="left">2</td>
+<td align="left">16bits</td>
+<td align="left">0~65535</td>
+<td align="left">ushort,unsigned short int,unsigned short</td>
+</tr>
+<tr>
+<td align="left">CV_16S</td>
+<td align="left">3</td>
+<td align="left">16bits</td>
+<td align="left">-32768~32767</td>
+<td align="left">short,short int</td>
+</tr>
+<tr>
+<td align="left">CV32S</td>
+<td align="left">4</td>
+<td align="left">32bits</td>
+<td align="left">-2147483648~2147483647</td>
+<td align="left">int,long</td>
+</tr>
+<tr>
+<td align="left">CV32F</td>
+<td align="left">5</td>
+<td align="left">32bits</td>
+<td align="left">1.18e-38~3.40e38</td>
+<td align="left">float</td>
+</tr>
+<tr>
+<td align="left">CV_64F</td>
+<td align="left">6</td>
+<td align="left">64bits</td>
+<td align="left">2.23e-308~1.79e308</td>
+<td align="left">double</td>
+</tr>
+<tr>
+<td align="left">CV_USRTYPE1</td>
+<td align="left">7</td>
+<td align="left">-</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<h4 id="2">2.通道数</h4>
+<pre><code>int Mat:channels()
+</code></pre>
+
+<h4 id="3">3.数据类型</h4>
+<p><code>types()</code>获取存储的矩阵元素的数据类型（包括位深度，通道数，数据类型）</p>
+<p>存储元素的数据类型：<code>CV_[位数][带符号与否][类型前缀]C[通道数]</code></p>
+<blockquote>
+<p>带符号与否：S为符号整型，U为无符号整型，F为浮点型；例如CV_8UC3</p>
+</blockquote>
+<p>图像类型=比特数+数据类型+通道数</p>
+<pre><code>int Mat:type()
+</code></pre>
+
+<p>具体数据类型与返回值关系：</p>
+<table>
+<thead>
+<tr>
+<th align="left"></th>
+<th align="left">C1</th>
+<th align="left">C2</th>
+<th align="left">C3</th>
+<th align="left">C4</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">CV_8U</td>
+<td align="left">0</td>
+<td align="left">8</td>
+<td align="left">16</td>
+<td align="left">24</td>
+<td></td>
+</tr>
+<tr>
+<td align="left">CV_8S</td>
+<td align="left">1</td>
+<td align="left">9</td>
+<td align="left">17</td>
+<td align="left">25</td>
+<td></td>
+</tr>
+<tr>
+<td align="left">CV_16U</td>
+<td align="left">2</td>
+<td align="left">10</td>
+<td align="left">18</td>
+<td align="left">26</td>
+<td></td>
+</tr>
+<tr>
+<td align="left">CV_16S</td>
+<td align="left">3</td>
+<td align="left">11</td>
+<td align="left">19</td>
+<td align="left">27</td>
+<td></td>
+</tr>
+<tr>
+<td align="left">CV_32S</td>
+<td align="left">4</td>
+<td align="left">12</td>
+<td align="left">20</td>
+<td align="left">28</td>
+<td></td>
+</tr>
+<tr>
+<td align="left">CV_32F</td>
+<td align="left">5</td>
+<td align="left">13</td>
+<td align="left">21</td>
+<td align="left">29</td>
+<td></td>
+</tr>
+<tr>
+<td align="left">CV_64F</td>
+<td align="left">6</td>
+<td align="left">14</td>
+<td align="left">22</td>
+<td align="left">30</td>
+<td></td>
+</tr>
+<tr>
+<td align="left">用户定义</td>
+<td align="left">7</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h1 id="2-mat">2. Mat基本操作</h1>
+<h2 id="mat">创建Mat对象</h2>
+<pre><code class="c++">//一，Mat构造器
+Mat M(2,2, CV_8UC3, Scalar(0,0,255));
+cout &lt;&lt; &quot;M = &quot; &lt;&lt; endl &lt;&lt; &quot; &quot; &lt;&lt; M &lt;&lt; endl &lt;&lt; endl;
+
+//二，C/C++数组初始化
+int sz[3] = {2,2,2};
+Mat L(3,sz, CV_8UC(1), Scalar::all(0));
+//cout &lt;&lt; &quot;L = &quot; &lt;&lt; endl &lt;&lt; &quot; &quot; &lt;&lt; L &lt;&lt; endl &lt;&lt; endl;
+
+//三，create函数
+M.create(4,4, CV_8UC(2));
+cout &lt;&lt; &quot;M = &quot;&lt;&lt; endl &lt;&lt; &quot; &quot;  &lt;&lt; M &lt;&lt; endl &lt;&lt; endl;
+
+//四，MATLAB 风格
+Mat E = Mat::eye(4, 4, CV_64F);
+cout &lt;&lt; &quot;E = &quot; &lt;&lt; endl &lt;&lt; &quot; &quot; &lt;&lt; E &lt;&lt; endl &lt;&lt; endl;
+Mat O = Mat::ones(2, 2, CV_32F);
+cout &lt;&lt; &quot;O = &quot; &lt;&lt; endl &lt;&lt; &quot; &quot; &lt;&lt; O &lt;&lt; endl &lt;&lt; endl;
+Mat Z = Mat::zeros(3,3, CV_8UC1);
+cout &lt;&lt; &quot;Z = &quot; &lt;&lt; endl &lt;&lt; &quot; &quot; &lt;&lt; Z &lt;&lt; endl &lt;&lt; endl;
+
+//五，逗号分割或者数组初始化
+Mat C = (Mat_&lt;double&gt;(3,3) &lt;&lt; 0, -1, 0, -1, 5, -1, 0, -1, 0);
+cout &lt;&lt; &quot;C = &quot; &lt;&lt; endl &lt;&lt; &quot; &quot; &lt;&lt; C &lt;&lt; endl &lt;&lt; endl;
+
+C = (Mat_&lt;double&gt;({0, -1, 0, -1, 5, -1, 0, -1, 0})).reshape(3); //C++11 support
+cout &lt;&lt; &quot;C = &quot; &lt;&lt; endl &lt;&lt; &quot; &quot; &lt;&lt; C &lt;&lt; endl &lt;&lt; endl;
+
+//六，利用已有Mat创建Mat头，用cv::Mat::clone or cv::Mat::copyTo方法
+Mat RowClone = C.row(1).clone();
+cout &lt;&lt; &quot;RowClone = &quot; &lt;&lt; endl &lt;&lt; &quot; &quot; &lt;&lt; RowClone &lt;&lt; endl &lt;&lt; endl;
+</code></pre>
+
+<h2 id="_3">格式化输出</h2>
+<pre><code class="c++">Mat r = Mat(10, 3, CV_8UC3);
+randu(r, Scalar::all(0), Scalar::all(255));
+
+cout &lt;&lt; &quot;r (OpenCV默认风格) = &quot; &lt;&lt; r &lt;&lt; &quot;;&quot; &lt;&lt; endl &lt;&lt; endl;
+cout &lt;&lt; &quot;r (Python风格) = &quot; &lt;&lt; format(r, Formatter::FMT_PYTHON) &lt;&lt; &quot;;&quot; &lt;&lt; endl &lt;&lt; endl;
+cout &lt;&lt; &quot;r (Numpy风格) = &quot; &lt;&lt;  format(r, Formatter::FMT_NUMPY )&lt;&lt; &quot;;&quot; &lt;&lt; endl &lt;&lt; endl;
+cout &lt;&lt; &quot;r (逗号分隔风格) = &quot; &lt;&lt; format(r, Formatter::FMT_CSV   )&lt;&lt; &quot;;&quot; &lt;&lt; endl&lt;&lt; endl;
+cout &lt;&lt; &quot;r (C语言风格) = &quot; &lt;&lt;  format(r, Formatter::FMT_C     ) &lt;&lt; &quot;;&quot; &lt;&lt; endl &lt;&lt; endl;
+</code></pre>
+
+<h2 id="_4">其他数据结构</h2>
+<ul>
+<li>Point类</li>
+</ul>
+<p><code>Point2f</code></p>
+<p><code>Point3f</code></p>
+<ul>
+<li>Scalar类</li>
+</ul>
+<blockquote>
+<p>Scalar是一个short型的向量，能够使用指定的定制化值来初始化矩阵，还可以用来表示颜色</p>
+</blockquote>
+<ul>
+<li>
+<p>Size类</p>
+</li>
+<li>
+<p>Rect类</p>
+</li>
+<li>
+<p>Circle</p>
+</li>
+</ul>
+<h2 id="_5">操作与遍历图像像素</h2>
+<h3 id="1_1">1.指针访问</h3>
+<pre><code class="c++">int rowNumber = outputImage.rows;  //行数
+int colNumber = outputImage.cols*outputImage.channels();  //列数 x 通道数=每一行元素的个数
+//双重循环，遍历所有的像素值
+for(int i = 0;i &lt; rowNumber;i++)  //行循环
+{  
+  uchar* data = image.ptr&lt;uchar&gt;(i);  //获取第i行的首地址
+  for(int j = 0;j &lt; colNumber;j++)   //列循环
+  {     
+    // ---------【开始处理每个像素】-------------    
+        // process each pixel, reduce color number; div=64
+    data[i] = data[i] / div * div + div / 2;
+    // ----------【处理结束】---------------------
+  }  //行处理结束
+}  
+</code></pre>
+
+<h3 id="2_1">2. 迭代器访问像素</h3>
+<p>另一种遍历像素的方法是使用 STL 风格的迭代器，如 <code>cv::MatIterator_</code> 和 <code>cv::MatConstIterator_</code>：</p>
+<p><code>MatIterator_&lt;cv::Vec3b&gt; it</code> </p>
+<p>也可以使用 <code>iterator</code> 类型，在 <code>Mat_</code> 模板类里定义：<code>Mat_&lt;cv::Vec3b&gt;::iterator it</code></p>
+<p>Mat 的迭代器是一个<a href="https://www.hahack.com/wiki/cpp-container.html#小结五种迭代器">随机访问迭代器</a>，因此支持完整的迭代器算术运算，如 <code>std::sort()</code> 等。</p>
+<pre><code class="c++">//获取迭代器
+Mat_&lt;Vec3b&gt;::iterator it = outputImage.begin&lt;Vec3b&gt;();  //初始位置的迭代器
+Mat_&lt;Vec3b&gt;::iterator itend = outputImage.end&lt;Vec3b&gt;();  //终止位置的迭代器
+//存取彩色图像像素
+for(;it != itend;++it){  
+  // ------------------------【开始处理每个像素】--------------------
+  (*it)[0] = ...
+  (*it)[1] = ...
+  (*it)[2] = ...
+  // ------------------------【处理结束】----------------------------
+}  
+</code></pre>
+
+<h3 id="3-at">3. 动态地址计算配合at访问像素</h3>
+<p>使用<code>at</code>方式进行访问，在<code>at</code>的时候需要指定的数据类型对照表如下：</p>
+<table>
+<thead>
+<tr>
+<th align="left">种类</th>
+<th align="left">C1</th>
+<th align="left">C2</th>
+<th align="left">C3</th>
+<th align="left">C4</th>
+<th align="left">C6</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>uchar</code>8U</td>
+<td align="left"><code>uchar</code></td>
+<td align="left"><code>cv::Vec2b</code></td>
+<td align="left"><code>cv::Vec3b</code></td>
+<td align="left"><code>cv::Vec4b</code></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>char</code>8S</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>ushort</code>16U</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>short</code>16S</td>
+<td align="left"><code>short</code></td>
+<td align="left"><code>cv::Vec2s</code></td>
+<td align="left"><code>cv::Vec3s</code></td>
+<td align="left"><code>cv::Vec4s</code></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>int</code>32S</td>
+<td align="left"><code>int</code></td>
+<td align="left"><code>cv::Vec2i</code></td>
+<td align="left"><code>cv::Vec3i</code></td>
+<td align="left"><code>cv::Vec4i</code></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>float</code>32F</td>
+<td align="left"><code>float</code></td>
+<td align="left"><code>cv::Vec2f</code></td>
+<td align="left"><code>cv::Vec3f</code></td>
+<td align="left"><code>cv::Vec4f</code></td>
+<td align="left"><code>cv::Vec6f</code></td>
+</tr>
+<tr>
+<td align="left"><code>double</code>64F</td>
+<td align="left"><code>double</code></td>
+<td align="left"><code>cv::Vec2d</code></td>
+<td align="left"><code>cv::Vec3d</code></td>
+<td align="left"><code>cv::Vec4d</code></td>
+<td align="left"><code>cv::Vec6d</code></td>
+</tr>
+</tbody>
+</table>
+<pre><code class="c++">//获取单通道灰度图（类型为8UC1）里像素点 (x,y) 的亮度值：
+Scalar intensity = img.at&lt;uchar&gt;(x，y);
+//也可以这么写：得到的 intensity.val[0] 将包含一个从 0~255 之间的数值。
+Scalar intensity = img.at&lt;uchar&gt;(Point(x, y));
+
+//存取彩色图像像素
+for(int i = 0;i &lt; rowNumber;i++){  
+  for(int j = 0;j &lt; colNumber;j++){     
+    // ------------------------【开始处理每个像素】--------------------
+    image.at&lt;Vec3b&gt;(i,j)[0] =   ...//蓝色通道
+    image.at&lt;Vec3b&gt;(i,j)[1] =   ...//绿色通道
+    image.at&lt;Vec3b&gt;(ij)[2] =    ... //红是通道
+    // -------------------------【处理结束】----------------------------
+  }  // 行处理结束     
+}  
+</code></pre>
+
+<p>更多像素操作:<a href="[https://github.com/QianMo/OpenCV3-Intro-Book-Src/blob/be7460d4ad038df8940dadf733d450e90e5ae0c4/OpenCV3-examples/src/%E3%80%905%E3%80%91%E7%AC%AC%E4%BA%94%E7%AB%A0/%E3%80%9024%E3%80%91%E9%81%8D%E5%8E%86%E5%9B%BE%E5%83%8F%E5%83%8F%E7%B4%A0%E7%9A%8414%E7%A7%8D%E6%96%B9%E6%B3%95/24_%E9%81%8D%E5%8E%86%E5%9B%BE%E5%83%8F%E5%83%8F%E7%B4%A0%E7%9A%8414%E7%A7%8D%E6%96%B9%E6%B3%95/24_14WaysToAccessPixel.cpp](https://github.com/QianMo/OpenCV3-Intro-Book-Src/blob/be7460d4ad038df8940dadf733d450e90e5ae0c4/OpenCV3-examples/src/[5]第五章/[24]遍历图像像素的14种方法/24_遍历图像像素的14种方法/24_14WaysToAccessPixel.cpp)">14种方法</a></p>
+<h3 id="4">4. 遍历并访问相邻像素</h3>
+<p>有时候需要在遍历图像的同时访问相邻的像素。如果从图像中减去拉普拉斯算子部分，图像的边缘就会放大，因而</p>
+<p>图像会变得更加尖锐。</p>
+<pre><code>增强后的像素值 = 5*当前 - 左 - 右 - 上 - 下
+</code></pre>
+
+<p>可使用三个指针来进行图像遍历，一个用于当前行，一个用于上面一行，一个用于下面一行：</p>
+<pre><code class="c++">/** 
+ * sharpen  -   lapracian sharpen function
+ *
+ * @param image     -   the source grey scale image
+ * @param result    -   the output grey scale image
+ */
+void sharpen(const cv::Mat &amp;image, cv::Mat &amp;result)
+{
+  // allocate if neccessary
+  result.create(image.size(), image.type());
+
+  for (int j=1; j&lt;image.rows-1; ++j) {  // for all rows
+                      // (except first and last)
+        const uchar *previous =
+                image.ptr&lt;const uchar&gt;(j-1);  // previous row
+        const uchar *current =
+                image.ptr&lt;const uchar&gt;(j);    // current row
+        const uchar *next  =
+                image.ptr&lt;const uchar&gt;(j+1);  // next row
+        uchar *output = result.ptr&lt;uchar&gt;(j);  // output row
+
+        for (int i=1; i&lt;image.cols-1; ++i) {
+            *output++ = cv::saturate_cast&lt;uchar&gt;(5*current[i]-current[i-1]
+                            -current[i+1]-previous[i]-next[i]);
+        }
+    }
+    // Set the unprocess pixelss to 0
+    result.row(0).setTo(cv::Scalar(0));
+    result.row(result.rows-1).setTo(cv::Scalar(0));
+    result.col(0).setTo(cv::Scalar(0));
+    result.col(result.cols-1).setTo(cv::Scalar(0));
+}
+</code></pre>
+
+<ul>
+<li>filter2D实现原理</li>
+</ul>
+<blockquote>
+<p>定义一个核（以矩阵的形式），调用函数并传入图像和内核，即可返回卷积滤波后的图像。</p>
+</blockquote>
+<h1 id="_6">更多操作</h1>
+<h2 id="roi">部分矩阵 &amp; 特定行/列 &amp; 设置ROI</h2>
+<ul>
+<li>使用Rect</li>
+<li>指定行列范围Range</li>
+</ul>
+<pre><code class="c++">// 行[0,2) 列[0,2) の範囲の部分行列（Range）
+M(cv::Range(0,2), cv::Range(0,2));
+// 行[0,2) 列[0,2) の範囲の部分行列（Rect）
+M(cv::Rect(0,0,2,2));
+
+// すべての行
+m1.rowRange(cv::Range::all()); //colRange
+// [0,2) 行の範囲
+m1.rowRange(cv::Range(0,2)); //colRange
+// 0行目,0列目
+m1.row(0) //.col(0);
+
+
+</code></pre>
+
+<h2 id="mat__tp-matx-vec">Mat_&lt;_Tp&gt;, Matx, Vec</h2>
+<h2 id="_7">通道的合成与分离</h2>
+<ul>
+<li>合成</li>
+</ul>
+<p>使用 <code>cv::merge</code> 操作可以重新将几个单通道图像合并成一个多通道图像。下面的程序演示了将一幅图像 image2 与另一幅图像 image1 的蓝色通道混合：</p>
+<p>merge, mixChannels</p>
+<ul>
+<li>分离</li>
+</ul>
+<p>可以使用 <code>cv::split</code> 操作来将彩色图像分离成一个或多个单通道图像。</p>
+<p>$mv<a href="I">c</a>=src(I)$</p>
+<pre><code class="c++">// create vector of 3 images
+std::vector&lt;cv::Mat&gt; planes;
+// split 1 3-channel image into 3 1-channel images
+cv::split(image1, planes);
+// add to blue channel
+planes[0] += image2;
+// merge the 3 1-channel images into 1 3-channel image
+cv::merge(planes, result);
+</code></pre>
+
+<h1 id="_8">相关函数</h1>
+<p>convertTo</p>
+<pre><code class="c++">//展示一幅 32F 的图像,需要先转成 8U 类型。
+cvtColor(img, grey, COLOR_BGR2GRAY);
+Mat sobelx;
+Sobel(grey, sobelx, CV_32F, 1, 0);
+double minVal, maxVal;
+minMaxLoc(sobelx, &amp;minVal, &amp;maxVal); //find minimum and maximum intensities
+Mat draw;
+sobelx.convertTo(draw, CV_8U, 255.0/(maxVal - minVal), -minVal * 255.0/(maxVal - minVal));
+</code></pre>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/vendor.83fe6e3c.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.7e1cb91c.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../../..",
+          features: [],
+          search: Object.assign({
+            worker: "../../../assets/javascripts/worker/search.37585f48.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="../../../js/accu.js"></script>
+      
+    
+  </body>
+</html>

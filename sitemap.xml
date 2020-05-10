@@ -1,315 +1,131 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url>
      <loc>https://seaside2mm.github.io/doc/</loc>
-     <lastmod>2020-05-08</lastmod>
+     <lastmod>2020-05-10</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://seaside2mm.github.io/doc/content/gameboy/preface/</loc>
-     <lastmod>2020-05-08</lastmod>
+     <loc>https://seaside2mm.github.io/doc/content/daze/ga/sga/</loc>
+     <lastmod>2020-05-10</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://seaside2mm.github.io/doc/content/gameboy/history/emulator/</loc>
-     <lastmod>2020-05-08</lastmod>
+     <loc>https://seaside2mm.github.io/doc/content/daze/ga/sga_optret/</loc>
+     <lastmod>2020-05-10</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://seaside2mm.github.io/doc/content/gameboy/history/runtime/</loc>
-     <lastmod>2020-05-08</lastmod>
+     <loc>https://seaside2mm.github.io/doc/content/daze/ga/evolve/</loc>
+     <lastmod>2020-05-10</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://seaside2mm.github.io/doc/content/gameboy/history/simulator/</loc>
-     <lastmod>2020-05-08</lastmod>
+     <loc>https://seaside2mm.github.io/doc/content/daze/ga/fooled_nn/</loc>
+     <lastmod>2020-05-10</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://seaside2mm.github.io/doc/content/gameboy/cartridge/about_cartridge/</loc>
-     <lastmod>2020-05-08</lastmod>
+     <loc>https://seaside2mm.github.io/doc/content/daze/dlib/install/</loc>
+     <lastmod>2020-05-10</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://seaside2mm.github.io/doc/content/gameboy/cartridge/cartridge_header/</loc>
-     <lastmod>2020-05-08</lastmod>
+     <loc>https://seaside2mm.github.io/doc/content/daze/dlib/face_detect/</loc>
+     <lastmod>2020-05-10</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://seaside2mm.github.io/doc/content/gameboy/cartridge/memory_bank_controller/</loc>
-     <lastmod>2020-05-08</lastmod>
+     <loc>https://seaside2mm.github.io/doc/content/daze/dlib/face_landmark/</loc>
+     <lastmod>2020-05-10</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://seaside2mm.github.io/doc/content/gameboy/cartridge/rom_only/</loc>
-     <lastmod>2020-05-08</lastmod>
+     <loc>https://seaside2mm.github.io/doc/content/daze/dlib/face_recognition/</loc>
+     <lastmod>2020-05-10</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://seaside2mm.github.io/doc/content/gameboy/cartridge/mbc1/</loc>
-     <lastmod>2020-05-08</lastmod>
+     <loc>https://seaside2mm.github.io/doc/content/daze/dlib/face_clustering/</loc>
+     <lastmod>2020-05-10</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://seaside2mm.github.io/doc/content/gameboy/cartridge/mbc2/</loc>
-     <lastmod>2020-05-08</lastmod>
+     <loc>https://seaside2mm.github.io/doc/content/daze/rc4/overview/</loc>
+     <lastmod>2020-05-10</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://seaside2mm.github.io/doc/content/gameboy/cartridge/mbc3/</loc>
-     <lastmod>2020-05-08</lastmod>
+     <loc>https://seaside2mm.github.io/doc/content/daze/rc4/performance_testing/</loc>
+     <lastmod>2020-05-10</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://seaside2mm.github.io/doc/content/gameboy/cartridge/mbc5/</loc>
-     <lastmod>2020-05-08</lastmod>
+     <loc>https://seaside2mm.github.io/doc/content/daze/game_of_life/overview/</loc>
+     <lastmod>2020-05-10</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://seaside2mm.github.io/doc/content/gameboy/cartridge/others/</loc>
-     <lastmod>2020-05-08</lastmod>
+     <loc>https://seaside2mm.github.io/doc/content/daze/sklearn/overview/</loc>
+     <lastmod>2020-05-10</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://seaside2mm.github.io/doc/content/gameboy/cpu/overview/</loc>
-     <lastmod>2020-05-08</lastmod>
+     <loc>https://seaside2mm.github.io/doc/content/daze/sklearn/liner_model/overview/</loc>
+     <lastmod>2020-05-10</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://seaside2mm.github.io/doc/content/gameboy/cpu/alu/</loc>
-     <lastmod>2020-05-08</lastmod>
+     <loc>https://seaside2mm.github.io/doc/content/daze/sklearn/liner_model/linear_regression/</loc>
+     <lastmod>2020-05-10</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://seaside2mm.github.io/doc/content/gameboy/cpu/register/</loc>
-     <lastmod>2020-05-08</lastmod>
+     <loc>https://seaside2mm.github.io/doc/content/daze/sklearn/liner_model/ridge/</loc>
+     <lastmod>2020-05-10</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://seaside2mm.github.io/doc/content/gameboy/cpu/isa/</loc>
-     <lastmod>2020-05-08</lastmod>
+     <loc>https://seaside2mm.github.io/doc/content/daze/sklearn/liner_model/logistic_regression/</loc>
+     <lastmod>2020-05-10</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://seaside2mm.github.io/doc/content/gameboy/cpu/pipeline/</loc>
-     <lastmod>2020-05-08</lastmod>
+     <loc>https://seaside2mm.github.io/doc/content/daze/sklearn/tree/</loc>
+     <lastmod>2020-05-10</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://seaside2mm.github.io/doc/content/gameboy/cpu/lr35902_standard/</loc>
-     <lastmod>2020-05-08</lastmod>
+     <loc>https://seaside2mm.github.io/doc/content/daze/sklearn/bayes/</loc>
+     <lastmod>2020-05-10</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://seaside2mm.github.io/doc/content/gameboy/cpu/lr35902_extension/</loc>
-     <lastmod>2020-05-08</lastmod>
+     <loc>https://seaside2mm.github.io/doc/content/daze/sklearn/knn/</loc>
+     <lastmod>2020-05-10</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://seaside2mm.github.io/doc/content/gameboy/cpu/cycles/</loc>
-     <lastmod>2020-05-08</lastmod>
+     <loc>https://seaside2mm.github.io/doc/content/daze/sklearn/cluster/</loc>
+     <lastmod>2020-05-10</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://seaside2mm.github.io/doc/content/gameboy/cpu/interrupts/</loc>
-     <lastmod>2020-05-08</lastmod>
+     <loc>https://seaside2mm.github.io/doc/content/daze/sklearn/svm/</loc>
+     <lastmod>2020-05-10</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://seaside2mm.github.io/doc/content/gameboy/cpu/mmu/</loc>
-     <lastmod>2020-05-08</lastmod>
+     <loc>https://seaside2mm.github.io/doc/content/daze/sklearn/manifold/</loc>
+     <lastmod>2020-05-10</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://seaside2mm.github.io/doc/content/gameboy/video/overview/</loc>
-     <lastmod>2020-05-08</lastmod>
+     <loc>https://seaside2mm.github.io/doc/content/daze/sklearn/evaluation/</loc>
+     <lastmod>2020-05-10</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://seaside2mm.github.io/doc/content/gameboy/video/dot_matrix/</loc>
-     <lastmod>2020-05-08</lastmod>
+     <loc>https://seaside2mm.github.io/doc/content/daze/ml/neural_style_transfer/</loc>
+     <lastmod>2020-05-10</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://seaside2mm.github.io/doc/content/gameboy/video/show/</loc>
-     <lastmod>2020-05-08</lastmod>
+     <loc>https://seaside2mm.github.io/doc/content/daze/ml/fasttext/</loc>
+     <lastmod>2020-05-10</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://seaside2mm.github.io/doc/content/gameboy/video/crt/</loc>
-     <lastmod>2020-05-08</lastmod>
+     <loc>https://seaside2mm.github.io/doc/content/daze/ml/hog/</loc>
+     <lastmod>2020-05-10</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://seaside2mm.github.io/doc/content/gameboy/video/system/</loc>
-     <lastmod>2020-05-08</lastmod>
+     <loc>https://seaside2mm.github.io/doc/content/daze/math/huffman/</loc>
+     <lastmod>2020-05-10</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://seaside2mm.github.io/doc/content/gameboy/video/gpu/</loc>
-     <lastmod>2020-05-08</lastmod>
+     <loc>https://seaside2mm.github.io/doc/content/daze/math/variance_and_sd/</loc>
+     <lastmod>2020-05-10</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://seaside2mm.github.io/doc/content/gameboy/video/code/</loc>
-     <lastmod>2020-05-08</lastmod>
+     <loc>https://seaside2mm.github.io/doc/content/daze/math/normal_distribution/</loc>
+     <lastmod>2020-05-10</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://seaside2mm.github.io/doc/content/gameboy/audio/overview/</loc>
-     <lastmod>2020-05-08</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://seaside2mm.github.io/doc/content/gameboy/audio/sound/</loc>
-     <lastmod>2020-05-08</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://seaside2mm.github.io/doc/content/gameboy/audio/cpal/</loc>
-     <lastmod>2020-05-08</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://seaside2mm.github.io/doc/content/gameboy/audio/concept/</loc>
-     <lastmod>2020-05-08</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://seaside2mm.github.io/doc/content/gameboy/audio/register/</loc>
-     <lastmod>2020-05-08</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://seaside2mm.github.io/doc/content/gameboy/audio/timer/</loc>
-     <lastmod>2020-05-08</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://seaside2mm.github.io/doc/content/gameboy/audio/frame_sequence/</loc>
-     <lastmod>2020-05-08</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://seaside2mm.github.io/doc/content/gameboy/audio/length_counter/</loc>
-     <lastmod>2020-05-08</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://seaside2mm.github.io/doc/content/gameboy/audio/vol/</loc>
-     <lastmod>2020-05-08</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://seaside2mm.github.io/doc/content/gameboy/audio/frequency_sweep/</loc>
-     <lastmod>2020-05-08</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://seaside2mm.github.io/doc/content/gameboy/audio/square/</loc>
-     <lastmod>2020-05-08</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://seaside2mm.github.io/doc/content/gameboy/audio/wave/</loc>
-     <lastmod>2020-05-08</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://seaside2mm.github.io/doc/content/gameboy/audio/noise/</loc>
-     <lastmod>2020-05-08</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://seaside2mm.github.io/doc/content/gameboy/audio/mixer/</loc>
-     <lastmod>2020-05-08</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://seaside2mm.github.io/doc/content/gameboy/audio/play/</loc>
-     <lastmod>2020-05-08</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://seaside2mm.github.io/doc/content/gameboy/other/joypad/</loc>
-     <lastmod>2020-05-08</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://seaside2mm.github.io/doc/content/gameboy/other/serial/</loc>
-     <lastmod>2020-05-08</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://seaside2mm.github.io/doc/content/gameboy/other/timer/</loc>
-     <lastmod>2020-05-08</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://seaside2mm.github.io/doc/content/gameboy/other/init/</loc>
-     <lastmod>2020-05-08</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://seaside2mm.github.io/doc/content/gameboy/other/test/</loc>
-     <lastmod>2020-05-08</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://seaside2mm.github.io/doc/content/gameboy/foot/</loc>
-     <lastmod>2020-05-08</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://seaside2mm.github.io/doc/content/py/np/split/</loc>
-     <lastmod>2020-05-08</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://seaside2mm.github.io/doc/content/py/plt/line/</loc>
-     <lastmod>2020-05-08</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://seaside2mm.github.io/doc/content/py/plt/scatter/</loc>
-     <lastmod>2020-05-08</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://seaside2mm.github.io/doc/content/py/plt/bar/</loc>
-     <lastmod>2020-05-08</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://seaside2mm.github.io/doc/content/py/plt/pie/</loc>
-     <lastmod>2020-05-08</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://seaside2mm.github.io/doc/content/py/f_string/</loc>
-     <lastmod>2020-05-08</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://seaside2mm.github.io/doc/content/py/ctypes/overview/</loc>
-     <lastmod>2020-05-08</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://seaside2mm.github.io/doc/content/py/ctypes/recycle/</loc>
-     <lastmod>2020-05-08</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://seaside2mm.github.io/doc/content/py/setup/</loc>
-     <lastmod>2020-05-08</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://seaside2mm.github.io/doc/content/py/pywasm/overview/</loc>
-     <lastmod>2020-05-08</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://seaside2mm.github.io/doc/content/py/pywasm/leb128/</loc>
-     <lastmod>2020-05-08</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://seaside2mm.github.io/doc/content/go/read_file/</loc>
-     <lastmod>2020-05-08</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://seaside2mm.github.io/doc/content/go/socket/</loc>
-     <lastmod>2020-05-08</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://seaside2mm.github.io/doc/content/go/socket_not_accept/</loc>
-     <lastmod>2020-05-08</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://seaside2mm.github.io/doc/content/go/tls/</loc>
-     <lastmod>2020-05-08</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://seaside2mm.github.io/doc/content/go/socks5/</loc>
-     <lastmod>2020-05-08</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://seaside2mm.github.io/doc/content/go/cross_compiling/</loc>
-     <lastmod>2020-05-08</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://seaside2mm.github.io/doc/content/go/end_of_time/</loc>
-     <lastmod>2020-05-08</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://seaside2mm.github.io/doc/content/go/token_bucket/</loc>
-     <lastmod>2020-05-08</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://seaside2mm.github.io/doc/content/go/fswatch/</loc>
-     <lastmod>2020-05-08</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://seaside2mm.github.io/doc/content/go/cgo/</loc>
-     <lastmod>2020-05-08</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://seaside2mm.github.io/doc/content/ahk/overview/</loc>
-     <lastmod>2020-05-08</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://seaside2mm.github.io/doc/content/ahk/clicker/</loc>
-     <lastmod>2020-05-08</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://seaside2mm.github.io/doc/content/ahk/color/</loc>
-     <lastmod>2020-05-08</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://seaside2mm.github.io/doc/content/ahk/longpress/</loc>
-     <lastmod>2020-05-08</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://seaside2mm.github.io/doc/content/ahk/loopread/</loc>
-     <lastmod>2020-05-08</lastmod>
+     <loc>https://seaside2mm.github.io/doc/content/daze/math/kelly_formula/</loc>
+     <lastmod>2020-05-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
 </urlset>
